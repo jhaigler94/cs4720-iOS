@@ -13,7 +13,9 @@ class CreateMemoryViewController: UIViewController, UITextFieldDelegate, UIImage
     // MARK: Properties
     @IBOutlet weak var memNameLabel: UILabel!
     @IBOutlet weak var memNameTextField: UITextField!
-    @IBOutlet weak var photoImageView: UIImageView!
+    @IBOutlet weak var memDateTextField: UITextField!
+    @IBOutlet weak var memTimeTextField: UITextField!
+    
     
     
     override func viewDidLoad() {
@@ -22,7 +24,14 @@ class CreateMemoryViewController: UIViewController, UITextFieldDelegate, UIImage
         // Do any additional setup after loading the view.
         
         // Handle the text field’s user input through delegate callbacks.
-        memNameTextField.delegate = self
+        //memNameTextField.delegate = self
+        memNameLabel.text = memNameTextField.text
+        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        var nav = self.navigationController?.navigationBar
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,59 +50,104 @@ class CreateMemoryViewController: UIViewController, UITextFieldDelegate, UIImage
         memNameLabel.text = textField.text
     }
 
-    // MARK: UIImagePickerControllerDelegate
-    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-        // Dismiss the picker if the user canceled.
-        dismissViewControllerAnimated(true, completion: nil)
-    }
-    
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        // The info dictionary contains multiple representations of the image, and this uses the original.
-        let selectedImage = info[UIImagePickerControllerOriginalImage] as! UIImage
-        
-        // Set photoImageView to display the selected image.
-        photoImageView.image = selectedImage
-        
-        // Dismiss the picker.
-        dismissViewControllerAnimated(true, completion: nil)
-    }
-    
+
     // MARK: Actions
-    @IBAction func setMemName(sender: UIButton) {
-        memNameLabel.text = "Memory Name"
-        memNameTextField.text = ""
+
+    // MARK: DatePicker
+    
+    @IBAction func selectDatePicker(sender: UITextField) {
+        
+        let inputView = UIView(frame: CGRectMake(0, 0, self.view.frame.width, 240))
+        
+        var datePickerView  : UIDatePicker = UIDatePicker(frame: CGRectMake(0, 40, 0, 0))
+        datePickerView.datePickerMode = UIDatePickerMode.Date
+        inputView.addSubview(datePickerView) // add date picker to UIView
+        
+        let doneButton = UIButton(frame: CGRectMake((self.view.frame.size.width/2) - (100/2), 0, 100, 50))
+        doneButton.setTitle("Done", forState: UIControlState.Normal)
+        doneButton.setTitle("Done", forState: UIControlState.Highlighted)
+        doneButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        doneButton.setTitleColor(UIColor.grayColor(), forState: UIControlState.Highlighted)
+        
+        inputView.addSubview(doneButton) // add Button to UIView
+        
+        doneButton.addTarget(self, action: "doneDatePicker:", forControlEvents: UIControlEvents.TouchUpInside) // set button click event
+        
+        sender.inputView = inputView
+        datePickerView.addTarget(self, action: Selector("handleDatePicker:"), forControlEvents: UIControlEvents.ValueChanged)
+        
+        handleDatePicker(datePickerView) // Set the date on start.
     }
-    @IBAction func selectImage(sender: UIButton) {
-        // Hide the keyboard.
-        memNameTextField.resignFirstResponder()
-        
-        // UIImagePickerController is a view controller that lets a user pick media from their photo library.
-        let imagePickerController = UIImagePickerController()
-        
-        // Only allow photos to be picked, not taken.
-        imagePickerController.sourceType = .PhotoLibrary
-        
-        // Make sure ViewController is notified when the user picks an image.
-        imagePickerController.delegate = self
-        
-        presentViewController(imagePickerController, animated: true, completion: nil)
+
+    
+    @IBAction func doneDatePicker(sender: UITextField) {
+        memDateTextField.resignFirstResponder()
     }
     
-    @IBAction func selectImageFromPhotoLibrary(sender: UITapGestureRecognizer) {
-        // Hide the keyboard.
-        memNameTextField.resignFirstResponder()
-        
-        // UIImagePickerController is a view controller that lets a user pick media from their photo library.
-        let imagePickerController = UIImagePickerController()
-        
-        // Only allow photos to be picked, not taken.
-        imagePickerController.sourceType = .PhotoLibrary
-        
-        // Make sure ViewController is notified when the user picks an image.
-        imagePickerController.delegate = self
-        
-        presentViewController(imagePickerController, animated: true, completion: nil)
+    func handleDatePicker(sender: UIDatePicker) {
+        var dateFormatter = NSDateFormatter()
+        dateFormatter.dateStyle = .LongStyle
+        dateFormatter.timeStyle = .NoStyle
+        memDateTextField.text = dateFormatter.stringFromDate(sender.date)
     }
+    
+    // MARK: TimePicker
+    @IBAction func selectTimePicker(sender: UITextField) {
+        
+        let inputView = UIView(frame: CGRectMake(0, 0, self.view.frame.width, 240))
+        
+        var timePickerView  : UIDatePicker = UIDatePicker(frame: CGRectMake(0, 40, 0, 0))
+        timePickerView.datePickerMode = UIDatePickerMode.Time
+        inputView.addSubview(timePickerView) // add date picker to UIView
+        
+        let doneButton = UIButton(frame: CGRectMake((self.view.frame.size.width/2) - (100/2), 0, 100, 50))
+        doneButton.setTitle("Done", forState: UIControlState.Normal)
+        doneButton.setTitle("Done", forState: UIControlState.Highlighted)
+        doneButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        doneButton.setTitleColor(UIColor.grayColor(), forState: UIControlState.Highlighted)
+        
+        inputView.addSubview(doneButton) // add Button to UIView
+        
+        doneButton.addTarget(self, action: "doneTimePicker:", forControlEvents: UIControlEvents.TouchUpInside) // set button click event
+        
+        sender.inputView = inputView
+        timePickerView.addTarget(self, action: Selector("handleTimePicker:"), forControlEvents: UIControlEvents.ValueChanged)
+        
+        handleTimePicker(timePickerView) // Set the date on start.
+    }
+    
+    @IBAction func doneTimePicker(sender: UITextField) {
+        memTimeTextField.resignFirstResponder()
+    }
+    
+    func handleTimePicker(sender: UIDatePicker) {
+        var timeFormatter = NSDateFormatter()
+        timeFormatter.dateStyle = .NoStyle
+        timeFormatter.timeStyle = .ShortStyle
+        memTimeTextField.text = timeFormatter.stringFromDate(sender.date)
+    }
+    
+    // MARK: Segue
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "ToMemPtListSeg") {
+            var memVC = segue.destinationViewController as! MemoryViewController;
+            
+            memVC.passName = memNameTextField.text
+            memVC.passDate = memDateTextField.text
+            memVC.passTime = memTimeTextField.text
+        }
+    }
+    
+    @IBAction func cancelCreate(sender: UIBarButtonItem) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    
+    
+    
+    
+
+    
     
     /*
     // MARK: - Navigation

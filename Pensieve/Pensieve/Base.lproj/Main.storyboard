@@ -18,14 +18,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zV6-wc-Xy7">
-                                <rect key="frame" x="20" y="226" width="249" height="30"/>
-                                <animations/>
-                                <state key="normal" title="Create New Memory!"/>
-                                <connections>
-                                    <segue destination="38T-K1-XBa" kind="presentation" id="min-I2-EzC"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PcX-w4-WSj">
                                 <rect key="frame" x="30" y="20" width="279" height="161"/>
                                 <animations/>
@@ -34,6 +26,14 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ig1-zJ-hlZ">
+                                <rect key="frame" x="116" y="211" width="106" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Create Memory"/>
+                                <connections>
+                                    <segue destination="KPe-dl-2p5" kind="presentation" id="kEn-VB-RTn"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -43,7 +43,7 @@
             </objects>
             <point key="canvasLocation" x="305" y="415"/>
         </scene>
-        <!--Create Memory View Controller-->
+        <!--Create New Memory-->
         <scene sceneID="DEc-AN-lng">
             <objects>
                 <viewController id="38T-K1-XBa" customClass="CreateMemoryViewController" customModule="Pensieve" customModuleProvider="target" sceneMemberID="viewController">
@@ -55,55 +55,88 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="OdW-Ux-Mej">
-                                <rect key="frame" x="20" y="40" width="560" height="459"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="OdW-Ux-Mej">
+                                <rect key="frame" x="20" y="92" width="560" height="286"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Memory Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ast-Y8-Fao">
-                                        <rect key="frame" x="0.0" y="0.0" width="113" height="21"/>
+                                        <rect key="frame" x="224" y="0.0" width="113" height="21"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="560" placeholderIntrinsicHeight="30" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your Memory name here..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xxH-Z4-KmM">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="560" placeholderIntrinsicHeight="30" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Create a new memory..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xxH-Z4-KmM">
                                         <rect key="frame" x="0.0" y="33" width="560" height="30"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="phM-xN-ghS">
-                                        <rect key="frame" x="0.0" y="75" width="143" height="30"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Memory Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GbS-9J-gqT">
+                                        <rect key="frame" x="229" y="75" width="104" height="21"/>
                                         <animations/>
-                                        <state key="normal" title="Reset Memory Name"/>
-                                        <connections>
-                                            <action selector="setMemName:" destination="38T-K1-XBa" eventType="touchUpInside" id="uIJ-Ia-wno"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D32-s0-SxF">
-                                        <rect key="frame" x="0.0" y="117" width="152" height="30"/>
-                                        <animations/>
-                                        <state key="normal" title="Click to change image"/>
-                                        <connections>
-                                            <action selector="selectImage:" destination="38T-K1-XBa" eventType="touchUpInside" id="Rss-59-DiF"/>
-                                        </connections>
-                                    </button>
-                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="300" placeholderIntrinsicHeight="300" image="defaultImage" translatesAutoresizingMaskIntoConstraints="NO" id="k20-1o-bk8">
-                                        <rect key="frame" x="0.0" y="159" width="300" height="300"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="560" placeholderIntrinsicHeight="30" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choose Memory start date..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tPx-n7-eF7">
+                                        <rect key="frame" x="0.0" y="107" width="560" height="30"/>
                                         <animations/>
                                         <gestureRecognizers/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="k20-1o-bk8" secondAttribute="height" multiplier="1:1" id="w6r-3e-ZhY"/>
-                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
                                         <connections>
-                                            <outletCollection property="gestureRecognizers" destination="v7b-4G-aWZ" appends="YES" id="ohL-Fr-6Yo"/>
+                                            <action selector="donePicker:" destination="38T-K1-XBa" eventType="touchUpOutside" id="A1S-l2-tNj"/>
+                                            <action selector="selectDatePicker:" destination="38T-K1-XBa" eventType="touchDown" id="zdw-8f-uC9"/>
                                         </connections>
-                                    </imageView>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Memory Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="luR-4n-7LX">
+                                        <rect key="frame" x="228" y="149" width="106" height="21"/>
+                                        <animations/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="560" placeholderIntrinsicHeight="30" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choose Memory start time..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xZP-NL-Nfq">
+                                        <rect key="frame" x="0.0" y="182" width="560" height="30"/>
+                                        <animations/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="doneTimePicker:" destination="38T-K1-XBa" eventType="touchUpOutside" id="ncb-ES-Erl"/>
+                                            <action selector="selectTimePicker:" destination="38T-K1-XBa" eventType="touchDown" id="d6q-Fw-A0W"/>
+                                        </connections>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Memory Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="413-9W-xyr">
+                                        <rect key="frame" x="214" y="224" width="133" height="21"/>
+                                        <animations/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D32-s0-SxF">
+                                        <rect key="frame" x="204" y="256" width="152" height="30"/>
+                                        <animations/>
+                                        <state key="normal" title="Click to change image"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Epi-lW-rIx">
+                                        <rect key="frame" x="256" y="256" width="49" height="30"/>
+                                        <animations/>
+                                        <state key="normal" title="Accept"/>
+                                        <connections>
+                                            <segue destination="lIU-M6-J9m" kind="show" identifier="ToMemPtListSeg" id="KX8-Iy-eJ6"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="xxH-Z4-KmM" secondAttribute="trailing" id="FGW-mn-cju"/>
                                     <constraint firstItem="xxH-Z4-KmM" firstAttribute="leading" secondItem="OdW-Ux-Mej" secondAttribute="leading" id="rNr-yy-mXF"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="subviews">
+                                        <exclude reference="D32-s0-SxF"/>
+                                    </mask>
+                                </variation>
                             </stackView>
                         </subviews>
                         <animations/>
@@ -114,10 +147,20 @@
                             <constraint firstItem="OdW-Ux-Mej" firstAttribute="leading" secondItem="DPd-6X-rDH" secondAttribute="leadingMargin" id="fTi-ay-0By"/>
                         </constraints>
                     </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Create New Memory" id="5D2-Ov-R3B">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="XJP-q0-EOe">
+                            <connections>
+                                <action selector="cancelCreate:" destination="38T-K1-XBa" id="w9s-l2-9pg"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="memDateTextField" destination="tPx-n7-eF7" id="3dp-qd-IYG"/>
                         <outlet property="memNameLabel" destination="ast-Y8-Fao" id="QTQ-vU-2T3"/>
                         <outlet property="memNameTextField" destination="xxH-Z4-KmM" id="RfS-d7-O5V"/>
-                        <outlet property="photoImageView" destination="k20-1o-bk8" id="IuA-b8-c2U"/>
+                        <outlet property="memTimeTextField" destination="xZP-NL-Nfq" id="iUa-TE-M2L"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G0e-7b-jCB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -127,7 +170,148 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1042" y="415"/>
+            <point key="canvasLocation" x="1166" y="319"/>
+        </scene>
+        <!--Memory View Controller-->
+        <scene sceneID="9oW-NW-U0L">
+            <objects>
+                <viewController id="lIU-M6-J9m" customClass="MemoryViewController" customModule="Pensieve" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Dbf-uZ-rek"/>
+                        <viewControllerLayoutGuide type="bottom" id="rz4-gJ-LJR"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gAX-8K-vE2">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" placeholderIntrinsicWidth="200" placeholderIntrinsicHeight="21" text="Memory Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tSc-2H-iWW">
+                                <rect key="frame" x="20" y="71" width="560" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" placeholderIntrinsicWidth="60" placeholderIntrinsicHeight="21" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JcY-p5-Snb">
+                                <rect key="frame" x="20" y="94" width="560" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qJp-mk-uop">
+                                <rect key="frame" x="20" y="155" width="223" height="30"/>
+                                <animations/>
+                                <state key="normal" title="ADD MEMORY POINT-CLICK ME"/>
+                                <connections>
+                                    <segue destination="AUR-yO-S7c" kind="show" identifier="ToCreateMemPtSeg" id="bUV-Z2-YQs"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" placeholderIntrinsicWidth="60" placeholderIntrinsicHeight="21" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1QN-18-kGa">
+                                <rect key="frame" x="20" y="117" width="560" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="passedMemDate" destination="JcY-p5-Snb" id="8Y0-yy-SPa"/>
+                        <outlet property="passedMemName" destination="tSc-2H-iWW" id="kHZ-CT-DWh"/>
+                        <outlet property="passedMemTime" destination="1QN-18-kGa" id="2iV-N5-Oql"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wf9-xt-tG7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2517" y="414"/>
+        </scene>
+        <!--Create Mem Pt View Controller-->
+        <scene sceneID="TAi-GC-X9L">
+            <objects>
+                <viewController id="AUR-yO-S7c" customClass="CreateMemPtViewController" customModule="Pensieve" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="TIp-wO-nSp"/>
+                        <viewControllerLayoutGuide type="bottom" id="nk2-I7-GUD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eQf-dw-zeY">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="6lp-3a-02i">
+                                <rect key="frame" x="20" y="86" width="560" height="401"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Memory Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tiQ-DV-3hj">
+                                        <rect key="frame" x="0.0" y="0.0" width="113" height="21"/>
+                                        <animations/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2OH-WN-JiS">
+                                        <rect key="frame" x="0.0" y="21" width="77" height="30"/>
+                                        <animations/>
+                                        <state key="normal" title="Take Photo"/>
+                                        <connections>
+                                            <action selector="takePhoto:" destination="AUR-yO-S7c" eventType="touchUpInside" id="meM-fs-DCz"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8qB-BL-Xdg">
+                                        <rect key="frame" x="0.0" y="51" width="130" height="30"/>
+                                        <animations/>
+                                        <state key="normal" title="Add Existing Photo"/>
+                                        <connections>
+                                            <action selector="pickPhotoFromLibrary:" destination="AUR-yO-S7c" eventType="touchUpInside" id="w8N-iC-Oo4"/>
+                                            <action selector="takePhoto:" destination="AUR-yO-S7c" eventType="touchUpInside" id="eMU-7B-o5h"/>
+                                        </connections>
+                                    </button>
+                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="320" image="defaultImage" translatesAutoresizingMaskIntoConstraints="NO" id="QQV-Cf-AaA">
+                                        <rect key="frame" x="0.0" y="81" width="320" height="320"/>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="QQV-Cf-AaA" secondAttribute="height" multiplier="1:1" id="VxZ-fk-lBA"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <animations/>
+                            </stackView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="6lp-3a-02i" firstAttribute="leading" secondItem="eQf-dw-zeY" secondAttribute="leadingMargin" id="gjz-ue-H2I"/>
+                            <constraint firstItem="6lp-3a-02i" firstAttribute="top" secondItem="TIp-wO-nSp" secondAttribute="bottom" constant="20" id="h4H-P6-Ghz"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="6lp-3a-02i" secondAttribute="trailing" id="wxU-YB-Sbm"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="QQV-Cf-AaA" id="uam-IS-oBj"/>
+                        <outlet property="memNameLabel" destination="tiQ-DV-3hj" id="zVH-Ze-26A"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="muY-iS-UuW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3157" y="413"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="hJZ-SD-EJU">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KPe-dl-2p5" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wfA-db-gsA">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="38T-K1-XBa" kind="relationship" relationship="rootViewController" id="Sst-WD-976"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="681-6D-SZr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1000" y="1026"/>
         </scene>
     </scenes>
     <resources>

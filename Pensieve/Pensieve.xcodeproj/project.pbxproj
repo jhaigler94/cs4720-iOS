@@ -13,7 +13,9 @@
 		26440CC01BD5A6070096874D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26440CBF1BD5A6070096874D /* Assets.xcassets */; };
 		26440CC31BD5A6070096874D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26440CC11BD5A6070096874D /* LaunchScreen.storyboard */; };
 		26440CCE1BD5A6070096874D /* PensieveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26440CCD1BD5A6070096874D /* PensieveTests.swift */; };
-		26440CD91BD5A97B0096874D /* CreateMemoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26440CD81BD5A97B0096874D /* CreateMemoryViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		26440CD91BD5A97B0096874D /* CreateMemoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26440CD81BD5A97B0096874D /* CreateMemoryViewController.swift */; };
+		269D62461BDEDCF900330C88 /* MemoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269D62451BDEDCF900330C88 /* MemoryViewController.swift */; };
+		269D62481BDEE49C00330C88 /* CreateMemPtViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269D62471BDEE49C00330C88 /* CreateMemPtViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +40,8 @@
 		26440CCD1BD5A6070096874D /* PensieveTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PensieveTests.swift; sourceTree = "<group>"; };
 		26440CCF1BD5A6070096874D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		26440CD81BD5A97B0096874D /* CreateMemoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateMemoryViewController.swift; sourceTree = "<group>"; };
+		269D62451BDEDCF900330C88 /* MemoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryViewController.swift; sourceTree = "<group>"; };
+		269D62471BDEE49C00330C88 /* CreateMemPtViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateMemPtViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,10 +86,12 @@
 				26440CB81BD5A6070096874D /* AppDelegate.swift */,
 				26440CBA1BD5A6070096874D /* ViewController.swift */,
 				26440CD81BD5A97B0096874D /* CreateMemoryViewController.swift */,
+				269D62451BDEDCF900330C88 /* MemoryViewController.swift */,
 				26440CBC1BD5A6070096874D /* Main.storyboard */,
 				26440CBF1BD5A6070096874D /* Assets.xcassets */,
 				26440CC11BD5A6070096874D /* LaunchScreen.storyboard */,
 				26440CC41BD5A6070096874D /* Info.plist */,
+				269D62471BDEE49C00330C88 /* CreateMemPtViewController.swift */,
 			);
 			path = Pensieve;
 			sourceTree = "<group>";
@@ -148,6 +154,7 @@
 				TargetAttributes = {
 					26440CB41BD5A6070096874D = {
 						CreatedOnToolsVersion = 7.0.1;
+						DevelopmentTeam = V7SHFB3HB2;
 					};
 					26440CC81BD5A6070096874D = {
 						CreatedOnToolsVersion = 7.0.1;
@@ -199,9 +206,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				269D62481BDEE49C00330C88 /* CreateMemPtViewController.swift in Sources */,
 				26440CBB1BD5A6070096874D /* ViewController.swift in Sources */,
 				26440CB91BD5A6070096874D /* AppDelegate.swift in Sources */,
 				26440CD91BD5A97B0096874D /* CreateMemoryViewController.swift in Sources */,
+				269D62461BDEDCF900330C88 /* MemoryViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,10 +339,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Pensieve/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cs4720.Pensieve;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -341,10 +353,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Pensieve/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cs4720.Pensieve;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -391,6 +406,7 @@
 				26440CD41BD5A6070096874D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		26440CD51BD5A6070096874D /* Build configuration list for PBXNativeTarget "PensieveTests" */ = {
 			isa = XCConfigurationList;
@@ -399,6 +415,7 @@
 				26440CD71BD5A6070096874D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
