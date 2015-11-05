@@ -30,6 +30,13 @@ class CreateMemPtViewController: UIViewController, UINavigationControllerDelegat
     
     // MARK: Actions
     
+    @IBAction func takePhotoButton(sender: UIBarButtonItem) {
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.sourceType = .Camera
+        imagePickerController.delegate = self
+        
+        presentViewController(imagePickerController, animated: true, completion: nil)
+    }
     @IBAction func takePhoto(sender: UIButton) {
         let imagePickerController = UIImagePickerController()
         imagePickerController.sourceType = .Camera
@@ -54,6 +61,10 @@ class CreateMemPtViewController: UIViewController, UINavigationControllerDelegat
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         let selectedImage = info[UIImagePickerControllerOriginalImage] as! UIImage
         imageView.image = selectedImage
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    @IBAction func saveMemPt(sender: UIBarButtonItem) {
         dismissViewControllerAnimated(true, completion: nil)
     }
     

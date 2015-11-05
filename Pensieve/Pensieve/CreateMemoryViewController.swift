@@ -7,14 +7,21 @@
 //
 
 import UIKit
+import CoreData
+import GoogleMaps
 
 class CreateMemoryViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     // MARK: Properties
     @IBOutlet weak var memNameLabel: UILabel!
     @IBOutlet weak var memNameTextField: UITextField!
     @IBOutlet weak var memDateTextField: UITextField!
     @IBOutlet weak var memTimeTextField: UITextField!
+    
+    var placePicker: GMSPlacePicker?
+    @IBOutlet weak var locNameLabel: UILabel!
+    @IBOutlet weak var locAddLabel: UILabel!
     
     
     
@@ -25,7 +32,9 @@ class CreateMemoryViewController: UIViewController, UITextFieldDelegate, UIImage
         
         // Handle the text field’s user input through delegate callbacks.
         //memNameTextField.delegate = self
-        memNameLabel.text = memNameTextField.text
+        //memNameLabel.text = memNameTextField.text
+        
+        //placePicker = GMSPlacePicker()
         
     }
     
@@ -38,7 +47,24 @@ class CreateMemoryViewController: UIViewController, UITextFieldDelegate, UIImage
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    @IBAction func SaveInformation(sender: AnyObject) {
+        print("Button Pressed")
+        createNewMemory(memNameTextField.text!, date:  memDateTextField.text!, time:
+            memTimeTextField.text!)
+    }
     
+    @IBAction func SaveInfo(sender: UIButton) {
+        print("Button Pressed")
+        createNewMemory(memNameTextField.text!, date:  memDateTextField.text!, time:
+            memTimeTextField.text!)
+        
+    }
+    
+    /*@IBAction func SaveInfo(sender: AnyObject) {
+        createNewMemory(memNameTextField.text!, date:  memDateTextField.text!, time:
+            memTimeTextField.text!)
+    }
+*/
     // MARK: UITextFieldDelegate
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         // Hide the keyboard.
@@ -126,6 +152,58 @@ class CreateMemoryViewController: UIViewController, UITextFieldDelegate, UIImage
         timeFormatter.timeStyle = .ShortStyle
         memTimeTextField.text = timeFormatter.stringFromDate(sender.date)
     }
+    
+    func createNewMemory(name: String,
+        date:String,
+        time: String) -> Bool{
+            
+            print("Begininng")
+            let newMem =
+            NSEntityDescription.insertNewObjectForEntityForName("Memory",
+                inManagedObjectContext: managedObjectContext) //as! Pensieve.Memory
+            print("HERE?")
+            
+            newMem.setValue(name, forKey: "memname")
+            newMem.setValue(time, forKey: "memtime")
+            newMem.setValue(date, forKey: "memdate")
+            //(newMem.memname, newMem.memdate, newMem.memtime) =
+              //  (name, date, time)
+            
+            do{
+                try managedObjectContext.save()
+            } catch let error as NSError{
+                print("Failed to save the new person. Error = \(error)")
+            }
+            
+            return false
+            
+    }
+    
+    // MARK: Google Place Picker
+    @IBAction func GetLocation(sender: UIButton) {
+        let center = CLLocationCoordinate2DMake(38.0328276, -78.5105284)
+        let northEast = CLLocationCoordinate2DMake(center.latitude + 0.001, center.longitude + 0.001)
+        let southWest = CLLocationCoordinate2DMake(center.latitude - 0.001, center.longitude - 0.001)
+        let viewport = GMSCoordinateBounds(coordinate: northEast, coordinate: southWest)
+        let config = GMSPlacePickerConfig(viewport: viewport)
+        placePicker = GMSPlacePicker(config: config)
+        
+        placePicker?.pickPlaceWithCallback({ (place: GMSPlace?, error: NSError?) -> Void in
+            if let error = error {
+                print("Pick Place error: \(error.localizedDescription)")
+                return
+            }
+            
+            if let place = place {
+                self.locNameLabel.text = place.name
+                self.locAddLabel.text = place.formattedAddress.componentsSeparatedByString(", ").joinWithSeparator("\n")
+            } else {
+                self.locNameLabel.text = "No Place Selected"
+                self.locAddLabel.text = ""
+            }
+        })
+    }
+    
     
     // MARK: Segue
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
