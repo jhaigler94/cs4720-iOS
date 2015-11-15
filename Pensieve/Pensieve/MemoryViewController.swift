@@ -7,15 +7,21 @@
 //
 
 import UIKit
+import CoreData
 
 class MemoryViewController: UIViewController {
     @IBOutlet weak var passedMemName: UILabel!
     @IBOutlet weak var passedMemDate: UILabel!
     @IBOutlet weak var passedMemTime: UILabel!
+    @IBOutlet weak var MemPointTable: UITableView!
     
     var passName:String!
     var passDate:String!
     var passTime:String!
+    var names = [String]()
+    
+    // MARK: Properties
+    let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +29,10 @@ class MemoryViewController: UIViewController {
         passedMemName.text = passName;
         passedMemDate.text = passDate;
         passedMemTime.text = passTime;
+        title = "Pensieve"
+        populateNames()
+        MemPointTable.registerClass(UITableViewCell.self,
+            forCellReuseIdentifier: "Cell")
 
         // Do any additional setup after loading the view.
     }
@@ -42,6 +52,47 @@ class MemoryViewController: UIViewController {
         }
     }
     
+    
+    func populateNames(){
+        
+        /* Create the fetch request first */
+        let fetchRequest = NSFetchRequest(entityName: "Memory")
+        
+        
+        /* And execute the fetch request on the context */
+        
+        do {
+            
+            let mems = try managedObjectContext.executeFetchRequest(fetchRequest)
+            for memory in mems{
+                if(!((memory.valueForKey("picfileloc")as? String!)==("MainNotPoint"))){
+                    if((memory.valueForKey("memname")as? String!)==(passName)){
+                    names.append((memory.valueForKey("memtime")as? String)!)
+                    }
+                }
+            }
+            
+        }catch let error as NSError{
+            print(error)
+        }
+    }
+    
+    func tableView(MemPointTable: UITableView,
+        numberOfRowsInSection section: Int) -> Int {
+            return names.count
+    }
+    
+    func tableView(MemPointTable: UITableView,
+        cellForRowAtIndexPath
+        indexPath: NSIndexPath) -> UITableViewCell {
+            
+            let cell =
+            MemPointTable.dequeueReusableCellWithIdentifier("Cell")
+            
+            cell!.textLabel!.text = names[indexPath.row]
+            
+            return cell!
+    }
 
     /*
     // MARK: - Navigation

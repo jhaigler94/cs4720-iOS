@@ -7,8 +7,12 @@
 //
 
 import UIKit
+import CoreData
 
 class CreateMemPtViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+    
+    
+    let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     
     // Mark: Properties
     @IBOutlet weak var memNameLabel: UILabel!
@@ -65,9 +69,41 @@ class CreateMemPtViewController: UIViewController, UINavigationControllerDelegat
     }
     
     @IBAction func saveMemPt(sender: UIBarButtonItem) {
+        
         dismissViewControllerAnimated(true, completion: nil)
     }
     
+    @IBAction func SaveMemPoint(sender: AnyObject) {
+        print("Non Bar Button Pressed")
+        createNewMemory(memNameLabel.text!)
+    }
+    
+    func createNewMemory(name: String) -> Bool{
+    
+      
+            print("Begininng")
+            let newMem =
+            NSEntityDescription.insertNewObjectForEntityForName("Memory",
+                inManagedObjectContext: managedObjectContext) //as! Pensieve.Memory
+            print("HERE?")
+            
+            newMem.setValue(name, forKey: "memname")
+            print("Name Saved")
+            newMem.setValue("MemPtName", forKey: "memtime")
+            //newMem.setValue(date, forKey: "memdate")
+            newMem.setValue("", forKey: "picfileloc")
+            
+            print("All the Rest Saved")
+
+            do{
+                try managedObjectContext.save()
+            } catch let error as NSError{
+                print("Failed to save the new person. Error = \(error)")
+            }
+            
+            return false
+            
+    }
     
     
     

@@ -9,10 +9,13 @@
 import UIKit
 import CoreData
 
-class ViewController: UIViewController, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var TableView: UITableView!
     var names = [String]()
+    var memName = String()
+    var memDate = String()
+    var memTime = String()
     
     // MARK: Properties
     let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
@@ -40,9 +43,9 @@ class ViewController: UIViewController, UITableViewDataSource {
            
                 let mems = try managedObjectContext.executeFetchRequest(fetchRequest)
                 for memory in mems{
-                    
+                    if((memory.valueForKey("picfileloc")as? String!)==("MainNotPoint")){
                     names.append((memory.valueForKey("memname")as? String)!)
-                    
+                    }
         }
             
         }catch let error as NSError{
@@ -65,6 +68,47 @@ class ViewController: UIViewController, UITableViewDataSource {
         numberOfRowsInSection section: Int) -> Int {
             return names.count
     }
+    
+    func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
+        NSLog("You selected cell number: \(indexPath.row)!")
+        
+        let fetchRequest = NSFetchRequest(entityName: "Memory")
+        
+        
+        /* And execute the fetch request on the context */
+        
+        do {
+            
+            let mems = try managedObjectContext.executeFetchRequest(fetchRequest)
+            for memory in mems{
+                if((memory.valueForKey("memname")as? String!)==((names[indexPath.row])as?String!)){
+                    if((memory.valueForKey("picfileloc")as? String!)==("MainNotPoint")){
+                    memName = ((memory.valueForKey("memname")as? String)!)
+                    memDate = ((memory.valueForKey("memdate")as? String)!)
+                    memTime = ((memory.valueForKey("memtime")as? String)!)                }
+            
+                }
+            }
+        }catch let error as NSError{
+            print(error)
+        }
+        NSLog(memName)
+        NSLog(memDate)
+        NSLog(memTime)
+        
+        //self.performSegueWithIdentifier("ToMemPtListSeg", sender: self)
+    }
+    
+    // MARK: Segue
+    //override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+      //  if (segue.identifier == "ToMemPtListSeg") {
+        //    var memVC = segue.destinationViewController as! MemoryViewController;
+            
+      //      memVC.passName = memName
+       //     memVC.passDate = memDate
+         //   memVC.passTime = memTime
+       // }
+    //}
     
     func tableView(TableView: UITableView,
         cellForRowAtIndexPath

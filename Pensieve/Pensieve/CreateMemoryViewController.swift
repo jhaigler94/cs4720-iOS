@@ -154,7 +154,7 @@ class CreateMemoryViewController: UIViewController, UITextFieldDelegate, UIImage
     }
     
     func createNewMemory(name: String,
-        date:String,
+        date: String,
         time: String) -> Bool{
             
             print("Begininng")
@@ -166,6 +166,7 @@ class CreateMemoryViewController: UIViewController, UITextFieldDelegate, UIImage
             newMem.setValue(name, forKey: "memname")
             newMem.setValue(time, forKey: "memtime")
             newMem.setValue(date, forKey: "memdate")
+            newMem.setValue("MainNotPoint", forKey: "picfileloc")
             //(newMem.memname, newMem.memdate, newMem.memtime) =
               //  (name, date, time)
             
@@ -196,7 +197,9 @@ class CreateMemoryViewController: UIViewController, UITextFieldDelegate, UIImage
             
             if let place = place {
                 self.locNameLabel.text = place.name
-                self.locAddLabel.text = place.formattedAddress.componentsSeparatedByString(", ").joinWithSeparator("\n")
+                if (place.formattedAddress != nil) {
+                    self.locAddLabel.text = place.formattedAddress.componentsSeparatedByString(", ").joinWithSeparator("\n")
+                }
             } else {
                 self.locNameLabel.text = "No Place Selected"
                 self.locAddLabel.text = ""
