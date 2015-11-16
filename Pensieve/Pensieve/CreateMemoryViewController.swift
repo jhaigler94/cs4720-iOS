@@ -49,14 +49,22 @@ class CreateMemoryViewController: UIViewController, UITextFieldDelegate, UIImage
     }
     @IBAction func SaveInformation(sender: AnyObject) {
         print("Button Pressed")
+        var locName = locNameLabel.text
+        if locNameLabel.text == "Location Name" {
+            locName = ""
+        }
         createNewMemory(memNameTextField.text!, date:  memDateTextField.text!, time:
-            memTimeTextField.text!)
+            memTimeTextField.text!, loc: locName!)
     }
     
     @IBAction func SaveInfo(sender: UIButton) {
         print("Button Pressed")
+        var locName = locNameLabel.text
+        if locNameLabel.text == "Location Name" {
+            locName = ""
+        }
         createNewMemory(memNameTextField.text!, date:  memDateTextField.text!, time:
-            memTimeTextField.text!)
+            memTimeTextField.text!, loc: locName!)
         
     }
     
@@ -117,6 +125,8 @@ class CreateMemoryViewController: UIViewController, UITextFieldDelegate, UIImage
         memDateTextField.text = dateFormatter.stringFromDate(sender.date)
     }
     
+    
+    
     // MARK: TimePicker
     @IBAction func selectTimePicker(sender: UITextField) {
         
@@ -155,7 +165,7 @@ class CreateMemoryViewController: UIViewController, UITextFieldDelegate, UIImage
     
     func createNewMemory(name: String,
         date: String,
-        time: String) -> Bool{
+        time: String, loc: String) -> Bool{
             
             print("Begininng")
             let newMem =
@@ -166,6 +176,7 @@ class CreateMemoryViewController: UIViewController, UITextFieldDelegate, UIImage
             newMem.setValue(name, forKey: "memname")
             newMem.setValue(time, forKey: "memtime")
             newMem.setValue(date, forKey: "memdate")
+            newMem.setValue(loc, forKey: "memloc")
             newMem.setValue("MainNotPoint", forKey: "picfileloc")
             //(newMem.memname, newMem.memdate, newMem.memtime) =
               //  (name, date, time)
@@ -182,29 +193,36 @@ class CreateMemoryViewController: UIViewController, UITextFieldDelegate, UIImage
     
     // MARK: Google Place Picker
     @IBAction func GetLocation(sender: UIButton) {
-        let center = CLLocationCoordinate2DMake(38.0328276, -78.5105284)
-        let northEast = CLLocationCoordinate2DMake(center.latitude + 0.001, center.longitude + 0.001)
-        let southWest = CLLocationCoordinate2DMake(center.latitude - 0.001, center.longitude - 0.001)
-        let viewport = GMSCoordinateBounds(coordinate: northEast, coordinate: southWest)
-        let config = GMSPlacePickerConfig(viewport: viewport)
-        placePicker = GMSPlacePicker(config: config)
-        
-        placePicker?.pickPlaceWithCallback({ (place: GMSPlace?, error: NSError?) -> Void in
-            if let error = error {
-                print("Pick Place error: \(error.localizedDescription)")
-                return
-            }
+        if CLLocationManager.locationServicesEnabled() {
+            let center = CLLocationCoordinate2DMake(38.0328276, -78.5105284)
+            let northEast = CLLocationCoordinate2DMake(center.latitude + 0.001, center.longitude + 0.001)
+            let southWest = CLLocationCoordinate2DMake(center.latitude - 0.001, center.longitude - 0.001)
+            let viewport = GMSCoordinateBounds(coordinate: northEast, coordinate: southWest)
+            let config = GMSPlacePickerConfig(viewport: viewport)
+            placePicker = GMSPlacePicker(config: config)
             
-            if let place = place {
-                self.locNameLabel.text = place.name
-                if (place.formattedAddress != nil) {
-                    self.locAddLabel.text = place.formattedAddress.componentsSeparatedByString(", ").joinWithSeparator("\n")
+            placePicker?.pickPlaceWithCallback({ (place: GMSPlace?, error: NSError?) -> Void in
+                if let error = error {
+                    print("Pick Place error: \(error.localizedDescription)")
+                    return
                 }
-            } else {
-                self.locNameLabel.text = "No Place Selected"
-                self.locAddLabel.text = ""
-            }
-        })
+                
+                if let place = place {
+                    self.locNameLabel.text = place.name
+                    if (place.formattedAddress != nil) {
+                        self.locAddLabel.text = place.formattedAddress.componentsSeparatedByString(", ").joinWithSeparator("\n")
+                    }
+                } else {
+                    self.locNameLabel.text = "No Place Selected"
+                    self.locAddLabel.text = ""
+                }
+            })
+        }
+        
+        else {
+            var alert = UIAlertController(title: "Alert", message: "Location Services disabled for this application.", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)        }
     }
     
     

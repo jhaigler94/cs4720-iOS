@@ -9,12 +9,18 @@
 import UIKit
 import CoreData
 
-class MemoryViewController: UIViewController {
+class MemoryViewController: UIViewController, UITableViewDelegate {
     @IBOutlet weak var passedMemName: UILabel!
     @IBOutlet weak var passedMemDate: UILabel!
     @IBOutlet weak var passedMemTime: UILabel!
     @IBOutlet weak var MemPointTable: UITableView!
     
+    
+    var memName = String()
+    var memDate = String()
+    var memTime = String()
+    var memLoc = String()
+    var picFileLoc = String()
     var passName:String!
     var passDate:String!
     var passTime:String!
@@ -30,16 +36,60 @@ class MemoryViewController: UIViewController {
         passedMemDate.text = passDate;
         passedMemTime.text = passTime;
         title = "Pensieve"
+        /*populateNames()
+        MemPointTable.registerClass(UITableViewCell.self,
+            forCellReuseIdentifier: "Cell")
+        */
+
+        // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        print("VIEWDIDAPPEAR: MEMORYVIEW")
+        names = []
         populateNames()
         MemPointTable.registerClass(UITableViewCell.self,
             forCellReuseIdentifier: "Cell")
-
-        // Do any additional setup after loading the view.
+        
+        //MemPointTable.reloadData()
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
+        NSLog("You selected cell number: \(indexPath.row)!")
+        
+        let fetchRequest = NSFetchRequest(entityName: "Memory")
+        
+        
+        /* And execute the fetch request on the context */
+        
+        do {
+            
+            let mems = try managedObjectContext.executeFetchRequest(fetchRequest)
+            for memory in mems{
+                if((memory.valueForKey("memname")as? String!)==((passedMemName.text)as?String!)){
+                    if((memory.valueForKey("memtime")as? String!)==(names[indexPath.row])){
+                        memName = ((memory.valueForKey("memname")as? String)!)
+                        memDate = ((memory.valueForKey("memdate")as? String)!)
+                        memTime = ((memory.valueForKey("memtime")as? String)!)
+                        memLoc = ((memory.valueForKey("memloc")as? String)!)
+                        picFileLoc = ((memory.valueForKey("picfileloc")as? String)!)
+                    }
+                }
+            }
+        }catch let error as NSError{
+            print(error)
+        }
+        NSLog(memName)
+        NSLog(memDate)
+        NSLog(memTime)
+        
+        self.performSegueWithIdentifier("ToViewMemPt", sender: self)
     }
     
     // MARK: Segue
@@ -49,6 +99,24 @@ class MemoryViewController: UIViewController {
             var cMemVC = segue.destinationViewController as! CreateMemPtViewController;
             
             cMemVC.passName = passedMemName.text
+        }
+        
+        else if (segue.identifier == "ToViewMemPt") {
+            var memVC = segue.destinationViewController as! ViewMemPt;
+            
+            memVC.passedName = memName
+            memVC.passedDate = memDate
+            memVC.passedTime = memTime
+            memVC.passedLoc = memLoc
+            memVC.passedFileLoc = picFileLoc
+        }
+        
+        
+    }
+    
+    @IBAction func unwindToMemView(unwindSegue: UIStoryboardSegue) {
+        if let memViewController = unwindSegue.sourceViewController as? CreateMemPtViewController {
+            print("Coming from CreateMemPtViewController")
         }
     }
     

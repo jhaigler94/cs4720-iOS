@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2637D48A1BF966CF00FDF402 /* ViewMemPt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2637D4891BF966CF00FDF402 /* ViewMemPt.swift */; };
 		26440CB91BD5A6070096874D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26440CB81BD5A6070096874D /* AppDelegate.swift */; };
 		26440CBB1BD5A6070096874D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26440CBA1BD5A6070096874D /* ViewController.swift */; };
 		26440CBE1BD5A6070096874D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26440CBC1BD5A6070096874D /* Main.storyboard */; };
@@ -32,6 +33,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2637D4871BF9380500FDF402 /* Pods-frameworks.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = "Pods-frameworks.sh"; path = "Pods/Target Support Files/Pods/Pods-frameworks.sh"; sourceTree = "<group>"; };
+		2637D4891BF966CF00FDF402 /* ViewMemPt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewMemPt.swift; sourceTree = "<group>"; };
 		26440CB51BD5A6070096874D /* Pensieve.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pensieve.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26440CB81BD5A6070096874D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		26440CBA1BD5A6070096874D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -97,6 +100,7 @@
 				26440CB81BD5A6070096874D /* AppDelegate.swift */,
 				26440CBA1BD5A6070096874D /* ViewController.swift */,
 				26440CD81BD5A97B0096874D /* CreateMemoryViewController.swift */,
+				2637D4891BF966CF00FDF402 /* ViewMemPt.swift */,
 				269D62451BDEDCF900330C88 /* MemoryViewController.swift */,
 				26440CBC1BD5A6070096874D /* Main.storyboard */,
 				26440CBF1BD5A6070096874D /* Assets.xcassets */,
@@ -130,6 +134,7 @@
 		F9C3DDE392C90FF06663D75D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2637D4871BF9380500FDF402 /* Pods-frameworks.sh */,
 				4E3F2963BBA0F9821FDBB407 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -287,6 +292,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2637D48A1BF966CF00FDF402 /* ViewMemPt.swift in Sources */,
 				269D62481BDEE49C00330C88 /* CreateMemPtViewController.swift in Sources */,
 				26440CBB1BD5A6070096874D /* ViewController.swift in Sources */,
 				3317888D1BEA644A0037E8EA /* MemTable.xcdatamodeld in Sources */,

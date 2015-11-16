@@ -23,13 +23,35 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Pensieve"
+        /*populateNames()
+        TableView.registerClass(UITableViewCell.self,
+            forCellReuseIdentifier: "Cell")
+        */
+        // Do any additional setup after loading the view, typically from a nib.
+        
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        print("VIEWDIDAPPEAR: View Controller")
+        TableView.reloadData()
+        names = []
         populateNames()
         TableView.registerClass(UITableViewCell.self,
             forCellReuseIdentifier: "Cell")
-        // Do any additional setup after loading the view, typically from a nib.
+
         
-        
+
     }
+    
+    /*override func viewDidAppear(animated: Bool) {
+        print("VIEWDIDAPPEAR: View Controller")
+        TableView.reloadData()
+        names = []
+        populateNames()
+        TableView.registerClass(UITableViewCell.self,
+            forCellReuseIdentifier: "Cell")
+    }
+*/
     
     func populateNames(){
         
@@ -45,12 +67,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 for memory in mems{
                     if((memory.valueForKey("picfileloc")as? String!)==("MainNotPoint")){
                     names.append((memory.valueForKey("memname")as? String)!)
+                        print((memory.valueForKey("memname")as? String)!)
                     }
         }
             
         }catch let error as NSError{
             print(error)
         }
+        print("Populate Names___")
     }
 
     override func didReceiveMemoryWarning() {
@@ -96,19 +120,19 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         NSLog(memDate)
         NSLog(memTime)
         
-        //self.performSegueWithIdentifier("ToMemPtListSeg", sender: self)
+        self.performSegueWithIdentifier("ToMemPtList", sender: self)
     }
     
     // MARK: Segue
-    //override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-      //  if (segue.identifier == "ToMemPtListSeg") {
-        //    var memVC = segue.destinationViewController as! MemoryViewController;
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "ToMemPtList") {
+            var memVC = segue.destinationViewController as! MemoryViewController;
             
-      //      memVC.passName = memName
-       //     memVC.passDate = memDate
-         //   memVC.passTime = memTime
-       // }
-    //}
+            memVC.passName = memName
+            memVC.passDate = memDate
+            memVC.passTime = memTime
+        }
+    }
     
     func tableView(TableView: UITableView,
         cellForRowAtIndexPath
