@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class ViewMemPt: UIViewController {
     
@@ -17,6 +18,12 @@ class ViewMemPt: UIViewController {
     @IBOutlet weak var memptLocLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     
+    
+    // MARK: Properties
+    let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+    
+    
+    var image: UIImage!
     var passedName:String!
     var passedDate:String!
     var passedTime:String!
@@ -32,6 +39,38 @@ class ViewMemPt: UIViewController {
         memptDateLabel.text = passedDate
         memptTimeLabel.text = passedTime
         memptLocLabel.text = passedLoc
+        findImg()
+    }
+    
+    func findImg(){
+    
+    /* Create the fetch request first */
+    let fetchRequest = NSFetchRequest(entityName: "Memory")
+    
+    
+    /* And execute the fetch request on the context */
+    
+    do {
+        var found = false
+        let mems = try managedObjectContext.executeFetchRequest(fetchRequest)
+        for memory in mems{
+                if((memory.valueForKey("memname")as? String!)==(passedName as? String!)) {
+                    if (!found) {
+                        if((memory.valueForKey("memtime")as? String!)==(passedTime as? String!)) {
+                            print("Reached inside the loop")
+                            image = UIImage(data: ((memory.valueForKey("picfileloc")) as? NSData)!)
+                            found = true
+                            //image = memory.valueForKey("picfileloc") as!UIImage
+                            imageView.image = image
+                        }
+                    }
+            }
+        }
+    
+        }catch let error as NSError{
+                print(error)
+        }
+    print("Image loop complete")
     }
 
     override func didReceiveMemoryWarning() {

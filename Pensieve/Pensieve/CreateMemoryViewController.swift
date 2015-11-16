@@ -176,8 +176,8 @@ class CreateMemoryViewController: UIViewController, UITextFieldDelegate, UIImage
             newMem.setValue(name, forKey: "memname")
             newMem.setValue(time, forKey: "memtime")
             newMem.setValue(date, forKey: "memdate")
-            newMem.setValue(loc, forKey: "memloc")
-            newMem.setValue("MainNotPoint", forKey: "picfileloc")
+            //newMem.setValue(loc, forKey: "memloc")
+            newMem.setValue("MainNotPoint", forKey: "memloc")
             //(newMem.memname, newMem.memdate, newMem.memtime) =
               //  (name, date, time)
             

@@ -65,7 +65,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
            
                 let mems = try managedObjectContext.executeFetchRequest(fetchRequest)
                 for memory in mems{
-                    if((memory.valueForKey("picfileloc")as? String!)==("MainNotPoint")){
+                    if((memory.valueForKey("memloc")as? String!)==("MainNotPoint")){
                     names.append((memory.valueForKey("memname")as? String)!)
                         print((memory.valueForKey("memname")as? String)!)
                     }
@@ -106,7 +106,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             let mems = try managedObjectContext.executeFetchRequest(fetchRequest)
             for memory in mems{
                 if((memory.valueForKey("memname")as? String!)==((names[indexPath.row])as?String!)){
-                    if((memory.valueForKey("picfileloc")as? String!)==("MainNotPoint")){
+                    if((memory.valueForKey("memloc")as? String!)==("MainNotPoint")){
                     memName = ((memory.valueForKey("memname")as? String)!)
                     memDate = ((memory.valueForKey("memdate")as? String)!)
                     memTime = ((memory.valueForKey("memtime")as? String)!)                }

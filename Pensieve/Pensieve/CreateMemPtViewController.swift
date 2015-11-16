@@ -28,7 +28,7 @@ class CreateMemPtViewController: UIViewController, UINavigationControllerDelegat
     
     
 
-    
+    var imageData: NSData!
     var passName:String!
 
     override func viewDidLoad() {
@@ -125,6 +125,7 @@ class CreateMemPtViewController: UIViewController, UINavigationControllerDelegat
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         let selectedImage = info[UIImagePickerControllerOriginalImage] as! UIImage
         imageView.image = selectedImage
+        imageData = UIImagePNGRepresentation(selectedImage)
         dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -156,7 +157,7 @@ class CreateMemPtViewController: UIViewController, UINavigationControllerDelegat
             newMem.setValue(time, forKey: "memtime")
             newMem.setValue(date, forKey: "memdate")
             newMem.setValue(loc, forKey: "memloc")
-            newMem.setValue("", forKey: "picfileloc")
+            newMem.setValue(imageData, forKey: "picfileloc")
             
             print("All the Rest Saved")
 

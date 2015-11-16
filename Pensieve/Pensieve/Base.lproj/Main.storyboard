@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="m4I-7x-qUg">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -40,7 +41,7 @@
                         <constraints>
                             <constraint firstItem="iVw-Ik-7gW" firstAttribute="top" secondItem="PcX-w4-WSj" secondAttribute="bottom" id="7HY-an-9yH"/>
                             <constraint firstItem="PcX-w4-WSj" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="HE4-im-Rmy"/>
-                            <constraint firstItem="PcX-w4-WSj" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="K2a-MB-myk"/>
+                            <constraint firstItem="PcX-w4-WSj" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="4" id="K2a-MB-myk"/>
                             <constraint firstAttribute="trailingMargin" secondItem="iVw-Ik-7gW" secondAttribute="trailing" id="W4T-oV-SkK"/>
                             <constraint firstAttribute="trailingMargin" secondItem="PcX-w4-WSj" secondAttribute="trailing" id="pXM-Ta-FAE"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="iVw-Ik-7gW" secondAttribute="bottom" id="re1-6I-E8l"/>
@@ -57,12 +58,12 @@
                     </navigationItem>
                     <connections>
                         <outlet property="TableView" destination="iVw-Ik-7gW" id="hll-YU-BUw"/>
-                        <segue destination="eyK-4s-jCD" kind="show" identifier="ToMemPtList" id="PCn-YY-f2V"/>
+                        <segue destination="lIU-M6-J9m" kind="show" identifier="ToMemPtList" id="izk-gL-unM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1117" y="415"/>
+            <point key="canvasLocation" x="1267" y="413"/>
         </scene>
         <!--Create New Memory-->
         <scene sceneID="DEc-AN-lng">
@@ -198,7 +199,7 @@
                                         <state key="normal" title="Accept Changes"/>
                                         <connections>
                                             <action selector="SaveInfo:" destination="38T-K1-XBa" eventType="touchUpInside" id="GhH-cq-d6W"/>
-                                            <segue destination="eyK-4s-jCD" kind="show" identifier="ToMemPtListSeg" id="ud1-3r-fwE"/>
+                                            <segue destination="lIU-M6-J9m" kind="show" identifier="ToMemPtListSeg" id="d0x-2r-nnl"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -315,12 +316,13 @@
                         <outlet property="passedMemDate" destination="JcY-p5-Snb" id="8Y0-yy-SPa"/>
                         <outlet property="passedMemName" destination="tSc-2H-iWW" id="kHZ-CT-DWh"/>
                         <outlet property="passedMemTime" destination="1QN-18-kGa" id="2iV-N5-Oql"/>
+                        <segue destination="LMA-eW-xWe" kind="show" identifier="ToViewMemPt" id="GD8-ks-kGW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wf9-xt-tG7" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="2zW-sb-EFv" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4161" y="415"/>
+            <point key="canvasLocation" x="3313" y="415"/>
         </scene>
         <!--Create Memory Point-->
         <scene sceneID="TAi-GC-X9L">
@@ -579,7 +581,7 @@
             </objects>
             <point key="canvasLocation" x="305" y="415"/>
         </scene>
-        <!--View Mem Pt-->
+        <!--View Memory Point-->
         <scene sceneID="mlu-A7-O90">
             <objects>
                 <viewController id="LMA-eW-xWe" customClass="ViewMemPt" customModule="Pensieve" customModuleProvider="target" sceneMemberID="viewController">
@@ -591,52 +593,66 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="bAn-KD-6v0">
-                                <rect key="frame" x="20" y="20" width="240" height="242"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="bAn-KD-6v0">
+                                <rect key="frame" x="20" y="78" width="560" height="106"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2BR-Dr-a6i">
-                                        <rect key="frame" x="0.0" y="0.0" width="240" height="21"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="560" height="21"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Date Selected" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bII-Zg-qyf">
-                                        <rect key="frame" x="0.0" y="29" width="240" height="21"/>
+                                        <rect key="frame" x="0.0" y="29" width="560" height="21"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Time Selected" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bmc-VI-PAV">
-                                        <rect key="frame" x="0.0" y="57" width="240" height="21"/>
+                                        <rect key="frame" x="0.0" y="57" width="560" height="21"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Location Selected" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IJu-k1-eiS">
-                                        <rect key="frame" x="0.0" y="86" width="240" height="21"/>
+                                        <rect key="frame" x="0.0" y="86" width="560" height="21"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="240" placeholderIntrinsicHeight="128" translatesAutoresizingMaskIntoConstraints="NO" id="kOI-7x-faF">
-                                        <rect key="frame" x="0.0" y="114" width="240" height="128"/>
-                                        <animations/>
-                                    </imageView>
                                 </subviews>
                                 <animations/>
                             </stackView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" placeholderIntrinsicWidth="240" placeholderIntrinsicHeight="128" image="defaultImage" translatesAutoresizingMaskIntoConstraints="NO" id="kOI-7x-faF">
+                                <rect key="frame" x="20" y="186" width="560" height="394"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="kOI-7x-faF" secondAttribute="height" multiplier="1:1" id="GOS-Mf-1Se"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="bAn-KD-6v0" firstAttribute="top" secondItem="izr-oF-AdP" secondAttribute="bottom" id="4ak-HI-E9C"/>
+                            <constraint firstItem="bAn-KD-6v0" firstAttribute="top" secondItem="izr-oF-AdP" secondAttribute="bottom" constant="8" id="4ak-HI-E9C"/>
+                            <constraint firstItem="kOI-7x-faF" firstAttribute="trailing" secondItem="aO4-VZ-RO0" secondAttribute="trailingMargin" id="X6o-sb-SN5"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="bAn-KD-6v0" secondAttribute="trailing" id="Xgj-E1-qwD"/>
+                            <constraint firstItem="K0h-r0-Ly5" firstAttribute="top" secondItem="bAn-KD-6v0" secondAttribute="bottom" constant="20" id="aBc-4w-wjF"/>
                             <constraint firstItem="bAn-KD-6v0" firstAttribute="leading" secondItem="aO4-VZ-RO0" secondAttribute="leadingMargin" id="alV-eL-qdW"/>
+                            <constraint firstItem="kOI-7x-faF" firstAttribute="top" secondItem="bAn-KD-6v0" secondAttribute="bottom" constant="8" id="wEe-Z3-Rb7"/>
+                            <constraint firstItem="kOI-7x-faF" firstAttribute="leading" secondItem="aO4-VZ-RO0" secondAttribute="leadingMargin" id="xed-Zz-fYz"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="aBc-4w-wjF"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <navigationItem key="navigationItem" title="View Memory Point" id="Yqg-fN-lIZ"/>
                     <connections>
                         <outlet property="imageView" destination="kOI-7x-faF" id="PgE-YF-T2e"/>
                         <outlet property="memNameLabel" destination="2BR-Dr-a6i" id="Yyv-Hh-nks"/>
@@ -647,7 +663,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qvt-Us-Qry" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4161" y="1082"/>
+            <point key="canvasLocation" x="3953" y="415"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="RH7-v1-kUi">
@@ -666,13 +682,33 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9an-5l-d4W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3349" y="415"/>
+            <point key="canvasLocation" x="3061" y="1171"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="rgU-tU-mCd">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bCj-8h-E6b" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="V9k-9u-Kq7">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="LMA-eW-xWe" kind="relationship" relationship="rootViewController" id="RRt-ms-elp"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sBH-6W-aLz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3855" y="1156"/>
         </scene>
     </scenes>
     <resources>
         <image name="defaultImage" width="540" height="540"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="PCn-YY-f2V"/>
+        <segue reference="izk-gL-unM"/>
+        <segue reference="GD8-ks-kGW"/>
     </inferredMetricsTieBreakers>
 </document>

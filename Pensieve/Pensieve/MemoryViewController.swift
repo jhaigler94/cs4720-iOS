@@ -20,7 +20,7 @@ class MemoryViewController: UIViewController, UITableViewDelegate {
     var memDate = String()
     var memTime = String()
     var memLoc = String()
-    var picFileLoc = String()
+    //var picFileLoc = String()
     var passName:String!
     var passDate:String!
     var passTime:String!
@@ -78,7 +78,7 @@ class MemoryViewController: UIViewController, UITableViewDelegate {
                         memDate = ((memory.valueForKey("memdate")as? String)!)
                         memTime = ((memory.valueForKey("memtime")as? String)!)
                         memLoc = ((memory.valueForKey("memloc")as? String)!)
-                        picFileLoc = ((memory.valueForKey("picfileloc")as? String)!)
+                        //picFileLoc = ((memory.valueForKey("picfileloc")as? String)!)
                     }
                 }
             }
@@ -108,7 +108,7 @@ class MemoryViewController: UIViewController, UITableViewDelegate {
             memVC.passedDate = memDate
             memVC.passedTime = memTime
             memVC.passedLoc = memLoc
-            memVC.passedFileLoc = picFileLoc
+            //memVC.passedFileLoc = picFileLoc
         }
         
         
@@ -133,7 +133,7 @@ class MemoryViewController: UIViewController, UITableViewDelegate {
             
             let mems = try managedObjectContext.executeFetchRequest(fetchRequest)
             for memory in mems{
-                if(!((memory.valueForKey("picfileloc")as? String!)==("MainNotPoint"))){
+                if(!((memory.valueForKey("memloc")as? String!)==("MainNotPoint"))){
                     if((memory.valueForKey("memname")as? String!)==(passName)){
                     names.append((memory.valueForKey("memtime")as? String)!)
                     }
