@@ -30,6 +30,7 @@ class ViewMemPt: UIViewController {
     var passedTime:String!
     var passedLoc:String!
     var passedFileLoc:String!
+    var passedId:String!
     
 
     override func viewDidLoad() {
@@ -51,22 +52,52 @@ class ViewMemPt: UIViewController {
     
     /* And execute the fetch request on the context */
     
-    do {
-        let mems = try managedObjectContext.executeFetchRequest(fetchRequest)
-        for memory in mems{
+        do {
+            let mems = try managedObjectContext.executeFetchRequest(fetchRequest)
+            for memory in mems{
                 if((memory.valueForKey("memname")as? String!)==(passedName as? String!)) {
                     if (!found) {
                         if((memory.valueForKey("memtime")as? String!)==(passedTime as? String!)) {
+                            if ((memory.valueForKey("pointid")as? String!)==(passedId as? String!)) {
                             
-                            if (UIImage(data: ((memory.valueForKey("picfileloc")) as? NSData)!) != nil) {
+                            //let checkValidation = NSFileManager.defaultManager()
+                            //if (checkValidation.fileExistsAtPath(memory.valueForKey("picfileloc")) as? NSData!) {
+                            
+                            //if (UIImage(data: ((memory.valueForKey("picfileloc")) as? NSData)!) != nil) {
                                 print("Reached inside the loop")
+                            
+                            do {
+                                print("ImageData = \(_stdlib_getDemangledTypeName(UIImage(data: ((memory.valueForKey("picfileloc")) as? NSData)!)))")
                                 image = UIImage(data: ((memory.valueForKey("picfileloc")) as? NSData)!)
+                                if ((image) != nil) {
+                                    imageView.image = image
+                                    UIView.animateWithDuration(2.0, animations: {
+                                        self.imageView.transform = CGAffineTransformMakeRotation((180.0 * CGFloat(M_PI)) / 180.0)
+                                    })
+                                    UIView.animateWithDuration(2.0, animations: {
+                                        self.imageView.transform = CGAffineTransformMakeRotation((360.0 * CGFloat(M_PI)) / 180.0)
+                                    })
+                                }
+                                found = true
+                                break
+                            } catch let error as NSError {
+                                print(error)
+                            }
+                            
+                                /*image = UIImage(data: ((memory.valueForKey("picfileloc")) as? NSData)!)
                                 found = true
                                 //image = memory.valueForKey("picfileloc") as!UIImage
-                                imageView.image = image
+                                
+                                if ((image) != nil) {
+                                    imageView.image = image
+                                    UIView.animateWithDuration(2.0, animations: {
+                                        self.imageView.transform = CGAffineTransformMakeRotation((180.0 * CGFloat(M_PI)) / 180.0)
+                                    })
+                                }
                                 break
+*/
 
-                            }
+                            //}
                             /*print("Reached inside the loop")
                             image = UIImage(data: ((memory.valueForKey("picfileloc")) as? NSData)!)
                             found = true
@@ -74,15 +105,16 @@ class ViewMemPt: UIViewController {
                             imageView.image = image
                             break
                             */
+                            }
                         }
                     }
+                }
             }
-        }
     
-        }catch let error as NSError{
-                print(error)
+        } catch let error as NSError{
+            print(error)
         }
-    print("Image loop complete")
+        print("Image loop complete")
     }
 
     override func didReceiveMemoryWarning() {

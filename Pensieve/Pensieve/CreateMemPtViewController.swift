@@ -16,6 +16,9 @@ class CreateMemPtViewController: UIViewController, UINavigationControllerDelegat
     let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     
     // Mark: Properties
+    var memDate: String!
+    var memTime: String!
+    
     @IBOutlet weak var memNameLabel: UILabel!
     
     @IBOutlet var imageView: UIImageView!
@@ -29,15 +32,15 @@ class CreateMemPtViewController: UIViewController, UINavigationControllerDelegat
     
 
     var imageData: NSData!
-    var passName:String!
+    var passFromMemName:String!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        memNameLabel.text = passName
+        memNameLabel.text = passFromMemName
         var stackFrame = stackView.frame
         stackFrame.size.width = UIScreen.mainScreen().bounds.width
         stackView.frame = stackFrame
-        
+        imageData = UIImagePNGRepresentation(UIImage(named: "defaultImage")!)
     }
 
     override func didReceiveMemoryWarning() {
@@ -130,7 +133,7 @@ class CreateMemPtViewController: UIViewController, UINavigationControllerDelegat
     }
     
     @IBAction func saveMemPt(sender: UIBarButtonItem) {
-        
+        print("Bar Button Pressed")
         dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -140,11 +143,30 @@ class CreateMemPtViewController: UIViewController, UINavigationControllerDelegat
         if memptLocNameLabel.text == "Location Name" {
             locName = ""
         }
+        print("ImageData = \(_stdlib_getDemangledTypeName(imageData))")
         createNewMemory(memNameLabel.text!, date: memptDateTextField.text!, time: memptTimeTextField.text!, loc: locName!)
     }
     
     func createNewMemory(name: String, date: String, time: String, loc: String) -> Bool{
-    
+        var i = 0
+        
+        let fetchRequest = NSFetchRequest(entityName: "Memory")
+        do {
+            
+            let mems = try managedObjectContext.executeFetchRequest(fetchRequest)
+            for memory in mems{
+                if((memory.valueForKey("memname")as? String!)==(name)){
+                    if ((memory.valueForKey("pointid")as? String!)==("0")) {
+                        memDate = (memory.valueForKey("memdate")as? String!)
+                        memTime = (memory.valueForKey("memtime")as? String!)
+                    }
+                    i++
+                }
+            }
+        } catch let error as NSError{
+            print(error)
+        }
+
       
             print("Begininng")
             let newMem =
@@ -157,9 +179,11 @@ class CreateMemPtViewController: UIViewController, UINavigationControllerDelegat
             newMem.setValue(time, forKey: "memtime")
             newMem.setValue(date, forKey: "memdate")
             newMem.setValue(loc, forKey: "memloc")
+            newMem.setValue(String(i), forKey:"pointid")
             newMem.setValue(imageData, forKey: "picfileloc")
             
             print("All the Rest Saved")
+            //print("PICFILELOC: " + String(imageData))
 
             do{
                 try managedObjectContext.save()
@@ -279,6 +303,20 @@ class CreateMemPtViewController: UIViewController, UINavigationControllerDelegat
             self.presentViewController(alert, animated: true, completion: nil)        }
     }
     
+    // MARK: Segue
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "ToMemFromSave") {
+            var SmemVC = segue.destinationViewController as! MemoryViewController
+            SmemVC.passName = memNameLabel.text
+            SmemVC.passDate = memDate
+            SmemVC.passTime = memTime
+        }
+        
+        
+        
+    }
+
     
     
 

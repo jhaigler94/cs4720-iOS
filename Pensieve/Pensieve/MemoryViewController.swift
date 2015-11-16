@@ -20,6 +20,7 @@ class MemoryViewController: UIViewController, UITableViewDelegate {
     var memDate = String()
     var memTime = String()
     var memLoc = String()
+    var memId = String()
     //var picFileLoc = String()
     var passName:String!
     var passDate:String!
@@ -73,11 +74,12 @@ class MemoryViewController: UIViewController, UITableViewDelegate {
             let mems = try managedObjectContext.executeFetchRequest(fetchRequest)
             for memory in mems{
                 if((memory.valueForKey("memname")as? String!)==((passedMemName.text)as?String!)){
-                    if((memory.valueForKey("memtime")as? String!)==(names[indexPath.row])){
+                    if((memory.valueForKey("pointid")as? String!)==(names[indexPath.row])){
                         memName = ((memory.valueForKey("memname")as? String)!)
                         memDate = ((memory.valueForKey("memdate")as? String)!)
                         memTime = ((memory.valueForKey("memtime")as? String)!)
                         memLoc = ((memory.valueForKey("memloc")as? String)!)
+                        memId = ((memory.valueForKey("pointid")as? String)!)
                         //picFileLoc = ((memory.valueForKey("picfileloc")as? String)!)
                     }
                 }
@@ -98,7 +100,7 @@ class MemoryViewController: UIViewController, UITableViewDelegate {
         if (segue.identifier == "ToCreateMemPtSeg") {
             var cMemVC = segue.destinationViewController as! CreateMemPtViewController;
             
-            cMemVC.passName = passedMemName.text
+            cMemVC.passFromMemName = passedMemName.text
         }
         
         else if (segue.identifier == "ToViewMemPt") {
@@ -108,6 +110,7 @@ class MemoryViewController: UIViewController, UITableViewDelegate {
             memVC.passedDate = memDate
             memVC.passedTime = memTime
             memVC.passedLoc = memLoc
+            memVC.passedId = memId
             //memVC.passedFileLoc = picFileLoc
         }
         
@@ -135,7 +138,8 @@ class MemoryViewController: UIViewController, UITableViewDelegate {
             for memory in mems{
                 if(!((memory.valueForKey("memloc")as? String!)==("MainNotPoint"))){
                     if((memory.valueForKey("memname")as? String!)==(passName)){
-                    names.append((memory.valueForKey("memtime")as? String)!)
+                    
+                    names.append(((memory.valueForKey("pointid")as? String)!))
                     }
                 }
             }

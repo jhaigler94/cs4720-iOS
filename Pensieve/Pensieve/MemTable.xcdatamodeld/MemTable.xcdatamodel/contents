@@ -6,8 +6,9 @@
         <attribute name="memname" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="memtime" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="picfileloc" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="pointid" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Memory" positionX="-63" positionY="-18" width="128" height="120"/>
+        <element name="Memory" positionX="-63" positionY="-18" width="128" height="135"/>
     </elements>
 </model>
