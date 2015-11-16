@@ -17,6 +17,7 @@ class ViewMemPt: UIViewController {
     @IBOutlet weak var memptTimeLabel: UILabel!
     @IBOutlet weak var memptLocLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
+    var found = false
     
     
     // MARK: Properties
@@ -51,17 +52,28 @@ class ViewMemPt: UIViewController {
     /* And execute the fetch request on the context */
     
     do {
-        var found = false
         let mems = try managedObjectContext.executeFetchRequest(fetchRequest)
         for memory in mems{
                 if((memory.valueForKey("memname")as? String!)==(passedName as? String!)) {
                     if (!found) {
                         if((memory.valueForKey("memtime")as? String!)==(passedTime as? String!)) {
-                            print("Reached inside the loop")
+                            
+                            if (UIImage(data: ((memory.valueForKey("picfileloc")) as? NSData)!) != nil) {
+                                print("Reached inside the loop")
+                                image = UIImage(data: ((memory.valueForKey("picfileloc")) as? NSData)!)
+                                found = true
+                                //image = memory.valueForKey("picfileloc") as!UIImage
+                                imageView.image = image
+                                break
+
+                            }
+                            /*print("Reached inside the loop")
                             image = UIImage(data: ((memory.valueForKey("picfileloc")) as? NSData)!)
                             found = true
                             //image = memory.valueForKey("picfileloc") as!UIImage
                             imageView.image = image
+                            break
+                            */
                         }
                     }
             }
