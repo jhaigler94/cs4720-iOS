@@ -4,5 +4,4 @@ platform :ios, '8.1'
 use_frameworks!
 
 pod 'GoogleMaps'
-pod 'SwiftyJSON', :git => "https://github.com/orta/SwiftyJSON", :branch => "podspec"
 pod 'SwiftyDropbox', '~> 1.0'
