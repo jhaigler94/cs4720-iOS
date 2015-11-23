@@ -1,10 +1,29 @@
 PODS:
+  - Alamofire (2.0.2)
   - GoogleMaps (1.10.5)
+  - SwiftyDropbox (1.0):
+    - Alamofire (~> 2.0.2)
+  - SwiftyJSON (2.1.1)
 
 DEPENDENCIES:
   - GoogleMaps
+  - SwiftyDropbox (~> 1.0)
+  - SwiftyJSON (from `https://github.com/orta/SwiftyJSON`, branch `podspec`)
+
+EXTERNAL SOURCES:
+  SwiftyJSON:
+    :branch: podspec
+    :git: https://github.com/orta/SwiftyJSON
+
+CHECKOUT OPTIONS:
+  SwiftyJSON:
+    :commit: 252838693668023571c46f56d7ea8347e6948d1b
+    :git: https://github.com/orta/SwiftyJSON
 
 SPEC CHECKSUMS:
+  Alamofire: 8edbab00802a752bb5240cc2abe70e7e881488ad
   GoogleMaps: da51c62c338c2d9c47cdad470a0d1e0e4b8544e4
+  SwiftyDropbox: 0badf62d4803136091e996171aab06b816814723
+  SwiftyJSON: 07749b17778595dd8876ab60acf47480b98a28c1
 
 COCOAPODS: 0.39.0

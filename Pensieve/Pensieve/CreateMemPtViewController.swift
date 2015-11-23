@@ -9,8 +9,9 @@
 import UIKit
 import CoreData
 import GoogleMaps
+import CoreLocation
 
-class CreateMemPtViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class CreateMemPtViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, CLLocationManagerDelegate {
     
     
     let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
@@ -25,6 +26,9 @@ class CreateMemPtViewController: UIViewController, UINavigationControllerDelegat
     @IBOutlet weak var memptDateTextField: UITextField!
     @IBOutlet weak var memptTimeTextField: UITextField!
     var placePicker: GMSPlacePicker?
+    var locationManager: CLLocationManager?
+    var lat:String!
+    var lon:String!
     @IBOutlet weak var memptLocNameLabel: UILabel!
     @IBOutlet weak var memptLocAddLabel: UILabel!
     @IBOutlet weak var stackView: UIStackView!
@@ -46,6 +50,45 @@ class CreateMemPtViewController: UIViewController, UINavigationControllerDelegat
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        /* Are location services available on this device? */
+        if CLLocationManager.locationServicesEnabled(){
+            
+            /* Do we have authorization to access location services? */
+            switch CLLocationManager.authorizationStatus(){
+            case .AuthorizedAlways:
+                /* Yes, always */
+                createLocationManager(startImmediately: true)
+            case .AuthorizedWhenInUse:
+                /* Yes, only when our app is in use */
+                createLocationManager(startImmediately: true)
+            case .Denied:
+                /* No */
+                displayAlertWithTitle("Not Determined",
+                    message: "Location services are not allowed for this app")
+            case .NotDetermined:
+                /* We don't know yet, we have to ask */
+                createLocationManager(startImmediately: false)
+                if let manager = self.locationManager{
+                    manager.requestWhenInUseAuthorization()
+                }
+            case .Restricted:
+                /* Restrictions have been applied, we have no access
+                to location services */
+                displayAlertWithTitle("Restricted",
+                    message: "Location services are not allowed for this app")
+            }
+            
+            
+        } else {
+            /* Location services are not enabled.
+            Take appropriate action: for instance, prompt the
+            user to enable the location services */
+            print("Location services are not enabled")
+        }
+
     }
     
     // MARK: Actions
@@ -272,7 +315,9 @@ class CreateMemPtViewController: UIViewController, UINavigationControllerDelegat
     //LocationPicker
     @IBAction func getLocation(sender: UIButton) {
         if CLLocationManager.locationServicesEnabled() {
-            let center = CLLocationCoordinate2DMake(38.0328276, -78.5105284)
+            let mylat = Double(lat)
+            let mylon = Double(lon)
+            let center = CLLocationCoordinate2DMake(mylat!, mylon!)
             let northEast = CLLocationCoordinate2DMake(center.latitude + 0.001, center.longitude + 0.001)
             let southWest = CLLocationCoordinate2DMake(center.latitude - 0.001, center.longitude - 0.001)
             let viewport = GMSCoordinateBounds(coordinate: northEast, coordinate: southWest)
@@ -302,6 +347,74 @@ class CreateMemPtViewController: UIViewController, UINavigationControllerDelegat
             alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)        }
     }
+    
+    
+    // MARK: Location
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        if locations.count == 0{
+            //handle error here
+            return
+        }
+        
+        let newLocation = locations[0]
+        
+        print("Latitude = \(newLocation.coordinate.latitude)")
+        print("Longitude = \(newLocation.coordinate.longitude)")
+        lat = String(newLocation.coordinate.latitude)
+        lon = String(newLocation.coordinate.longitude)
+        
+    }
+    
+    func locationManager(manager: CLLocationManager,
+        didFailWithError error: NSError){
+            print("Location manager failed with error = \(error)")
+    }
+    
+    func locationManager(manager: CLLocationManager,
+        didChangeAuthorizationStatus status: CLAuthorizationStatus){
+            
+            print("The authorization status of location services is changed to: ", terminator: "")
+            
+            switch CLLocationManager.authorizationStatus(){
+            case .AuthorizedAlways:
+                print("Authorized")
+            case .AuthorizedWhenInUse:
+                print("Authorized when in use")
+            case .Denied:
+                print("Denied")
+            case .NotDetermined:
+                print("Not determined")
+            case .Restricted:
+                print("Restricted")
+            }
+            
+    }
+    
+    func createLocationManager(startImmediately startImmediately: Bool){
+        locationManager = CLLocationManager()
+        if let manager = locationManager{
+            print("Successfully created the location manager")
+            manager.delegate = self
+            if startImmediately{
+                manager.startUpdatingLocation()
+            }
+        }
+    }
+    
+    func displayAlertWithTitle(title: String, message: String){
+        let controller = UIAlertController(title: title,
+            message: message,
+            preferredStyle: .Alert)
+        
+        controller.addAction(UIAlertAction(title: "OK",
+            style: .Default,
+            handler: nil))
+        
+        presentViewController(controller, animated: true, completion: nil)
+        
+    }
+
     
     // MARK: Segue
     

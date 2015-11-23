@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		16A3FEA657D6BB71D7CA4957 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 210F12A7662F22DBF6952198 /* Pods.framework */; };
+		260DBEE71C02A28D00C8A0FC /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260DBEE61C02A28D00C8A0FC /* MapViewController.swift */; };
+		260DBEE91C02A5A300C8A0FC /* TypesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260DBEE81C02A5A300C8A0FC /* TypesTableViewController.swift */; };
+		260DBEEB1C02A76F00C8A0FC /* GooglePlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260DBEEA1C02A76F00C8A0FC /* GooglePlace.swift */; };
+		260DBEED1C02A77700C8A0FC /* GoogleDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260DBEEC1C02A77700C8A0FC /* GoogleDataProvider.swift */; };
 		2637D48A1BF966CF00FDF402 /* ViewMemPt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2637D4891BF966CF00FDF402 /* ViewMemPt.swift */; };
 		26440CB91BD5A6070096874D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26440CB81BD5A6070096874D /* AppDelegate.swift */; };
 		26440CBB1BD5A6070096874D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26440CBA1BD5A6070096874D /* ViewController.swift */; };
@@ -19,7 +24,6 @@
 		269D62481BDEE49C00330C88 /* CreateMemPtViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269D62471BDEE49C00330C88 /* CreateMemPtViewController.swift */; };
 		3317888D1BEA644A0037E8EA /* MemTable.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3317888B1BEA644A0037E8EA /* MemTable.xcdatamodeld */; };
 		3317888F1BEA65330037E8EA /* Memory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3317888E1BEA65330037E8EA /* Memory.swift */; };
-		D6561EF38DA8E8FE490D55B4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E3F2963BBA0F9821FDBB407 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +37,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		210F12A7662F22DBF6952198 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		260DBEE61C02A28D00C8A0FC /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		260DBEE81C02A5A300C8A0FC /* TypesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypesTableViewController.swift; sourceTree = "<group>"; };
+		260DBEEA1C02A76F00C8A0FC /* GooglePlace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GooglePlace.swift; sourceTree = "<group>"; };
+		260DBEEC1C02A77700C8A0FC /* GoogleDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleDataProvider.swift; sourceTree = "<group>"; };
 		2637D4871BF9380500FDF402 /* Pods-frameworks.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = "Pods-frameworks.sh"; path = "Pods/Target Support Files/Pods/Pods-frameworks.sh"; sourceTree = "<group>"; };
 		2637D4891BF966CF00FDF402 /* ViewMemPt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewMemPt.swift; sourceTree = "<group>"; };
 		26440CB51BD5A6070096874D /* Pensieve.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pensieve.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -50,7 +59,6 @@
 		269D62471BDEE49C00330C88 /* CreateMemPtViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateMemPtViewController.swift; sourceTree = "<group>"; };
 		3317888C1BEA644A0037E8EA /* MemTable.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MemTable.xcdatamodel; sourceTree = "<group>"; };
 		3317888E1BEA65330037E8EA /* Memory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Memory.swift; sourceTree = "<group>"; };
-		4E3F2963BBA0F9821FDBB407 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		9978FB01A401BD3905CA0DB5 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		C7C5B757CBD4C481558CF85A /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -60,7 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D6561EF38DA8E8FE490D55B4 /* libPods.a in Frameworks */,
+				16A3FEA657D6BB71D7CA4957 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,7 +109,11 @@
 				26440CBA1BD5A6070096874D /* ViewController.swift */,
 				26440CD81BD5A97B0096874D /* CreateMemoryViewController.swift */,
 				2637D4891BF966CF00FDF402 /* ViewMemPt.swift */,
+				260DBEE61C02A28D00C8A0FC /* MapViewController.swift */,
+				260DBEE81C02A5A300C8A0FC /* TypesTableViewController.swift */,
+				260DBEEC1C02A77700C8A0FC /* GoogleDataProvider.swift */,
 				269D62451BDEDCF900330C88 /* MemoryViewController.swift */,
+				260DBEEA1C02A76F00C8A0FC /* GooglePlace.swift */,
 				26440CBC1BD5A6070096874D /* Main.storyboard */,
 				26440CBF1BD5A6070096874D /* Assets.xcassets */,
 				26440CC11BD5A6070096874D /* LaunchScreen.storyboard */,
@@ -135,7 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				2637D4871BF9380500FDF402 /* Pods-frameworks.sh */,
-				4E3F2963BBA0F9821FDBB407 /* libPods.a */,
+				210F12A7662F22DBF6952198 /* Pods.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -293,9 +305,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				2637D48A1BF966CF00FDF402 /* ViewMemPt.swift in Sources */,
+				260DBEED1C02A77700C8A0FC /* GoogleDataProvider.swift in Sources */,
+				260DBEE91C02A5A300C8A0FC /* TypesTableViewController.swift in Sources */,
+				260DBEEB1C02A76F00C8A0FC /* GooglePlace.swift in Sources */,
 				269D62481BDEE49C00330C88 /* CreateMemPtViewController.swift in Sources */,
 				26440CBB1BD5A6070096874D /* ViewController.swift in Sources */,
 				3317888D1BEA644A0037E8EA /* MemTable.xcdatamodeld in Sources */,
+				260DBEE71C02A28D00C8A0FC /* MapViewController.swift in Sources */,
 				3317888F1BEA65330037E8EA /* Memory.swift in Sources */,
 				26440CB91BD5A6070096874D /* AppDelegate.swift in Sources */,
 				26440CD91BD5A97B0096874D /* CreateMemoryViewController.swift in Sources */,
