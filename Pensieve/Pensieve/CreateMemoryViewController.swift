@@ -22,8 +22,8 @@ class CreateMemoryViewController: UIViewController, UITextFieldDelegate, UIImage
     
     var placePicker: GMSPlacePicker?
     var locationManager: CLLocationManager?
-    var lat:String!
-    var lon:String!
+    var lat:String! = "38"
+    var lon:String! = "-78"
     @IBOutlet weak var locNameLabel: UILabel!
     @IBOutlet weak var locAddLabel: UILabel!
     
@@ -41,6 +41,23 @@ class CreateMemoryViewController: UIViewController, UITextFieldDelegate, UIImage
         //placePicker = GMSPlacePicker()
         
     }
+    
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        if locations.count == 0{
+            //handle error here
+            return
+        }
+        
+        let newLocation = locations[0]
+        
+        print("Latitude = \(newLocation.coordinate.latitude)")
+        print("Longitude = \(newLocation.coordinate.longitude)")
+        lat = String(newLocation.coordinate.latitude)
+        lon = String(newLocation.coordinate.longitude)
+        
+    }
+    
     
     override func viewDidAppear(animated: Bool) {
         var nav = self.navigationController?.navigationBar
@@ -233,7 +250,7 @@ class CreateMemoryViewController: UIViewController, UITextFieldDelegate, UIImage
     
     // MARK: Google Place Picker
     @IBAction func GetLocation(sender: UIButton) {
-        /*if CLLocationManager.locationServicesEnabled() {
+        if CLLocationManager.locationServicesEnabled() {
             let mylat = Double(lat)
             let mylon = Double(lon)
             let center = CLLocationCoordinate2DMake(mylat!, mylon!)
@@ -260,7 +277,7 @@ class CreateMemoryViewController: UIViewController, UITextFieldDelegate, UIImage
                 }
             })
         }
-*/
+
         if CLLocationManager.locationServicesEnabled() {
             let mylat = Double(lat)
             let mylon = Double(lon)
@@ -274,22 +291,7 @@ class CreateMemoryViewController: UIViewController, UITextFieldDelegate, UIImage
     }
     
     // MARK: Location
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
-        if locations.count == 0{
-            //handle error here
-            return
-        }
-        
-        let newLocation = locations[0]
-        
-        print("Latitude = \(newLocation.coordinate.latitude)")
-        print("Longitude = \(newLocation.coordinate.longitude)")
-        lat = String(newLocation.coordinate.latitude)
-        lon = String(newLocation.coordinate.longitude)
-        
-    }
-    
+   
     func locationManager(manager: CLLocationManager,
         didFailWithError error: NSError){
             print("Location manager failed with error = \(error)")

@@ -27,7 +27,7 @@
 import UIKit
 import Foundation
 import CoreLocation
-import SwiftyJSON
+//import SwiftyJSON
 
 class GooglePlace {
   let name: String

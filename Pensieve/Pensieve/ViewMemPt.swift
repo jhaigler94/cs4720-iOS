@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import SwiftyDropbox
 
 class ViewMemPt: UIViewController {
     
@@ -18,7 +19,7 @@ class ViewMemPt: UIViewController {
     @IBOutlet weak var memptLocLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     var found = false
-    
+    var good = false
     
     // MARK: Properties
     let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
@@ -32,6 +33,57 @@ class ViewMemPt: UIViewController {
     var passedFileLoc:String!
     var passedId:String!
     
+    @IBAction func dropboxUpload(sender: AnyObject) {
+        if (Dropbox.authorizedClient == nil) {
+            Dropbox.authorizeFromController(self)
+        } else {
+            print("User is already authorized!")
+        }
+        if(!(Dropbox.authorizedClient == nil)){
+            let client = Dropbox.authorizedClient
+            print(client)
+        let pathText = "/" + memNameLabel!.text! + " " + memptTimeLabel!.text! + "picture.jpeg"
+        let imageData = UIImagePNGRepresentation(imageView.image!)
+        let fileData = imageData
+        client!.files.upload(path: "/" + memNameLabel!.text! + " " + memptTimeLabel!.text! + "picture.jpeg", body: fileData!).response { response, error in
+            if let metadata = response {
+                print("*** Upload file ****")
+                print("Uploaded file name: \(metadata.name)")
+                print("Uploaded file revision: \(metadata.rev)")
+                
+                client!.files.getMetadata(path: pathText).response { response, error in
+                    print("*** Get file metadata ***")
+                    if let metadata = response {
+                        print(metadata)
+                        if let file = metadata as? Files.FileMetadata {
+                            print("This is a file with path: \(file.pathLower)")
+                            print("File size: \(file.size)")
+                            self.displayAlertWithTitle("Saved", message: "at path: \(file.pathLower)" )
+                        } else if let folder = metadata as? Files.FolderMetadata {
+                            print("This is a folder with path: \(folder.pathLower)")
+                        }
+                    }else{
+                        print(error!)
+                    }
+                }
+            }
+            }
+        }
+
+    }
+    
+    func displayAlertWithTitle(title: String, message: String){
+        let controller = UIAlertController(title: title,
+            message: message,
+            preferredStyle: .Alert)
+        
+        controller.addAction(UIAlertAction(title: "OK",
+            style: .Default,
+            handler: nil))
+        
+        presentViewController(controller, animated: true, completion: nil)
+        
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +94,8 @@ class ViewMemPt: UIViewController {
         memptTimeLabel.text = passedTime
         memptLocLabel.text = passedLoc
         findImg()
+        
+        
     }
     
     func findImg(){

@@ -27,8 +27,8 @@ class CreateMemPtViewController: UIViewController, UINavigationControllerDelegat
     @IBOutlet weak var memptTimeTextField: UITextField!
     var placePicker: GMSPlacePicker?
     var locationManager: CLLocationManager?
-    var lat:String!
-    var lon:String!
+    var lat:String! = "38"
+    var lon:String! = "-78"
     @IBOutlet weak var memptLocNameLabel: UILabel!
     @IBOutlet weak var memptLocAddLabel: UILabel!
     @IBOutlet weak var stackView: UIStackView!

@@ -8,10 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		16A3FEA657D6BB71D7CA4957 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 210F12A7662F22DBF6952198 /* Pods.framework */; };
-		260DBEE71C02A28D00C8A0FC /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260DBEE61C02A28D00C8A0FC /* MapViewController.swift */; };
-		260DBEE91C02A5A300C8A0FC /* TypesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260DBEE81C02A5A300C8A0FC /* TypesTableViewController.swift */; };
-		260DBEEB1C02A76F00C8A0FC /* GooglePlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260DBEEA1C02A76F00C8A0FC /* GooglePlace.swift */; };
-		260DBEED1C02A77700C8A0FC /* GoogleDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260DBEEC1C02A77700C8A0FC /* GoogleDataProvider.swift */; };
 		2637D48A1BF966CF00FDF402 /* ViewMemPt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2637D4891BF966CF00FDF402 /* ViewMemPt.swift */; };
 		26440CB91BD5A6070096874D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26440CB81BD5A6070096874D /* AppDelegate.swift */; };
 		26440CBB1BD5A6070096874D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26440CBA1BD5A6070096874D /* ViewController.swift */; };
@@ -24,6 +20,9 @@
 		269D62481BDEE49C00330C88 /* CreateMemPtViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269D62471BDEE49C00330C88 /* CreateMemPtViewController.swift */; };
 		3317888D1BEA644A0037E8EA /* MemTable.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3317888B1BEA644A0037E8EA /* MemTable.xcdatamodeld */; };
 		3317888F1BEA65330037E8EA /* Memory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3317888E1BEA65330037E8EA /* Memory.swift */; };
+		332C6E291C02B3E900320FE3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 332C6E281C02B3E900320FE3 /* QuartzCore.framework */; };
+		332C6E2B1C02B3FE00320FE3 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 332C6E2A1C02B3FE00320FE3 /* Security.framework */; };
+		332C6E2D1C02B42400320FE3 /* SwiftyDropbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 332C6E2C1C02B42400320FE3 /* SwiftyDropbox.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,10 +37,6 @@
 
 /* Begin PBXFileReference section */
 		210F12A7662F22DBF6952198 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		260DBEE61C02A28D00C8A0FC /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		260DBEE81C02A5A300C8A0FC /* TypesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypesTableViewController.swift; sourceTree = "<group>"; };
-		260DBEEA1C02A76F00C8A0FC /* GooglePlace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GooglePlace.swift; sourceTree = "<group>"; };
-		260DBEEC1C02A77700C8A0FC /* GoogleDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleDataProvider.swift; sourceTree = "<group>"; };
 		2637D4871BF9380500FDF402 /* Pods-frameworks.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = "Pods-frameworks.sh"; path = "Pods/Target Support Files/Pods/Pods-frameworks.sh"; sourceTree = "<group>"; };
 		2637D4891BF966CF00FDF402 /* ViewMemPt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewMemPt.swift; sourceTree = "<group>"; };
 		26440CB51BD5A6070096874D /* Pensieve.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pensieve.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -59,6 +54,9 @@
 		269D62471BDEE49C00330C88 /* CreateMemPtViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateMemPtViewController.swift; sourceTree = "<group>"; };
 		3317888C1BEA644A0037E8EA /* MemTable.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MemTable.xcdatamodel; sourceTree = "<group>"; };
 		3317888E1BEA65330037E8EA /* Memory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Memory.swift; sourceTree = "<group>"; };
+		332C6E281C02B3E900320FE3 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		332C6E2A1C02B3FE00320FE3 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		332C6E2C1C02B42400320FE3 /* SwiftyDropbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyDropbox.framework; path = "Pods/../build/Debug-iphoneos/SwiftyDropbox.framework"; sourceTree = "<group>"; };
 		9978FB01A401BD3905CA0DB5 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		C7C5B757CBD4C481558CF85A /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -68,6 +66,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				332C6E2D1C02B42400320FE3 /* SwiftyDropbox.framework in Frameworks */,
+				332C6E2B1C02B3FE00320FE3 /* Security.framework in Frameworks */,
+				332C6E291C02B3E900320FE3 /* QuartzCore.framework in Frameworks */,
 				16A3FEA657D6BB71D7CA4957 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -109,11 +110,7 @@
 				26440CBA1BD5A6070096874D /* ViewController.swift */,
 				26440CD81BD5A97B0096874D /* CreateMemoryViewController.swift */,
 				2637D4891BF966CF00FDF402 /* ViewMemPt.swift */,
-				260DBEE61C02A28D00C8A0FC /* MapViewController.swift */,
-				260DBEE81C02A5A300C8A0FC /* TypesTableViewController.swift */,
-				260DBEEC1C02A77700C8A0FC /* GoogleDataProvider.swift */,
 				269D62451BDEDCF900330C88 /* MemoryViewController.swift */,
-				260DBEEA1C02A76F00C8A0FC /* GooglePlace.swift */,
 				26440CBC1BD5A6070096874D /* Main.storyboard */,
 				26440CBF1BD5A6070096874D /* Assets.xcassets */,
 				26440CC11BD5A6070096874D /* LaunchScreen.storyboard */,
@@ -146,6 +143,9 @@
 		F9C3DDE392C90FF06663D75D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				332C6E2C1C02B42400320FE3 /* SwiftyDropbox.framework */,
+				332C6E2A1C02B3FE00320FE3 /* Security.framework */,
+				332C6E281C02B3E900320FE3 /* QuartzCore.framework */,
 				2637D4871BF9380500FDF402 /* Pods-frameworks.sh */,
 				210F12A7662F22DBF6952198 /* Pods.framework */,
 			);
@@ -199,6 +199,7 @@
 		26440CAD1BD5A6070096874D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0710;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "University of Virginia";
 				TargetAttributes = {
@@ -305,13 +306,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				2637D48A1BF966CF00FDF402 /* ViewMemPt.swift in Sources */,
-				260DBEED1C02A77700C8A0FC /* GoogleDataProvider.swift in Sources */,
-				260DBEE91C02A5A300C8A0FC /* TypesTableViewController.swift in Sources */,
-				260DBEEB1C02A76F00C8A0FC /* GooglePlace.swift in Sources */,
 				269D62481BDEE49C00330C88 /* CreateMemPtViewController.swift in Sources */,
 				26440CBB1BD5A6070096874D /* ViewController.swift in Sources */,
 				3317888D1BEA644A0037E8EA /* MemTable.xcdatamodeld in Sources */,
-				260DBEE71C02A28D00C8A0FC /* MapViewController.swift in Sources */,
 				3317888F1BEA65330037E8EA /* Memory.swift in Sources */,
 				26440CB91BD5A6070096874D /* AppDelegate.swift in Sources */,
 				26440CD91BD5A97B0096874D /* CreateMemoryViewController.swift in Sources */,
@@ -445,14 +442,21 @@
 			baseConfigurationReference = C7C5B757CBD4C481558CF85A /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				INFOPLIST_FILE = Pensieve/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cs4720.Pensieve;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Pensieve-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -461,14 +465,20 @@
 			baseConfigurationReference = 9978FB01A401BD3905CA0DB5 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				INFOPLIST_FILE = Pensieve/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cs4720.Pensieve;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Pensieve-Bridging-Header.h";
 			};
 			name = Release;
 		};
