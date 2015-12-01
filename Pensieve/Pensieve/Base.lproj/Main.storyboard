@@ -341,22 +341,8 @@
                                     <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WaE-PO-e3B">
                                         <rect key="frame" x="0.0" y="0.0" width="560" height="454"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YuB-89-fVF">
-                                                <rect key="frame" x="19" y="408" width="48" height="38"/>
-                                                <animations/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                <state key="normal" title="Save"/>
-                                                <connections>
-                                                    <action selector="SaveMemPoint:" destination="AUR-yO-S7c" eventType="touchUpInside" id="alH-uU-pND"/>
-                                                    <segue destination="lIU-M6-J9m" kind="show" identifier="ToMemFromSave" id="0sr-r8-3rx"/>
-                                                </connections>
-                                            </button>
-                                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" placeholderIntrinsicWidth="120" placeholderIntrinsicHeight="120" image="defaultImage" translatesAutoresizingMaskIntoConstraints="NO" id="QQV-Cf-AaA">
-                                                <rect key="frame" x="19" y="265" width="136" height="142"/>
-                                                <animations/>
-                                            </imageView>
                                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="6lp-3a-02i">
-                                                <rect key="frame" x="19" y="8" width="561" height="249"/>
+                                                <rect key="frame" x="19" y="8" width="561" height="267"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Memory Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tiQ-DV-3hj">
                                                         <rect key="frame" x="0.0" y="0.0" width="113" height="21"/>
@@ -368,25 +354,33 @@
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2OH-WN-JiS">
-                                                        <rect key="frame" x="0.0" y="21" width="77" height="30"/>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="1j3-k2-N3i">
+                                                        <rect key="frame" x="0.0" y="21" width="214" height="27"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8qB-BL-Xdg">
+                                                                <rect key="frame" x="0.0" y="0.0" width="107" height="27"/>
+                                                                <animations/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                <state key="normal" title="Add Existing Photo"/>
+                                                                <connections>
+                                                                    <action selector="pickPhotoFromLibrary:" destination="AUR-yO-S7c" eventType="touchUpInside" id="w8N-iC-Oo4"/>
+                                                                    <action selector="takePhoto:" destination="AUR-yO-S7c" eventType="touchUpInside" id="eMU-7B-o5h"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2OH-WN-JiS">
+                                                                <rect key="frame" x="107" y="0.0" width="107" height="27"/>
+                                                                <animations/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                <state key="normal" title="Take Photo"/>
+                                                                <connections>
+                                                                    <action selector="takePhoto:" destination="AUR-yO-S7c" eventType="touchUpInside" id="meM-fs-DCz"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
                                                         <animations/>
-                                                        <state key="normal" title="Take Photo"/>
-                                                        <connections>
-                                                            <action selector="takePhoto:" destination="AUR-yO-S7c" eventType="touchUpInside" id="meM-fs-DCz"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8qB-BL-Xdg">
-                                                        <rect key="frame" x="0.0" y="51" width="130" height="30"/>
-                                                        <animations/>
-                                                        <state key="normal" title="Add Existing Photo"/>
-                                                        <connections>
-                                                            <action selector="pickPhotoFromLibrary:" destination="AUR-yO-S7c" eventType="touchUpInside" id="w8N-iC-Oo4"/>
-                                                            <action selector="takePhoto:" destination="AUR-yO-S7c" eventType="touchUpInside" id="eMU-7B-o5h"/>
-                                                        </connections>
-                                                    </button>
+                                                    </stackView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" placeholderIntrinsicWidth="561" placeholderIntrinsicHeight="21" text="Memory Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="00l-3S-13T">
-                                                        <rect key="frame" x="0.0" y="81" width="561" height="21"/>
+                                                        <rect key="frame" x="0.0" y="48" width="561" height="21"/>
                                                         <animations/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="21" id="dLz-9v-BXK"/>
@@ -396,7 +390,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" placeholderIntrinsicWidth="560" placeholderIntrinsicHeight="30" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choose Memory start date..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Y3T-vq-C7T">
-                                                        <rect key="frame" x="0.0" y="102" width="561" height="21"/>
+                                                        <rect key="frame" x="0.0" y="69" width="561" height="21"/>
                                                         <animations/>
                                                         <gestureRecognizers/>
                                                         <constraints>
@@ -411,7 +405,7 @@
                                                         </connections>
                                                     </textField>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" placeholderIntrinsicWidth="561" placeholderIntrinsicHeight="21" text="Memory Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a3d-WH-4se">
-                                                        <rect key="frame" x="0.0" y="123" width="561" height="21"/>
+                                                        <rect key="frame" x="0.0" y="90" width="561" height="21"/>
                                                         <animations/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="21" id="Gve-cF-mQw"/>
@@ -421,7 +415,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" placeholderIntrinsicWidth="560" placeholderIntrinsicHeight="30" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choose Memory start time..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3Ex-B8-zJF">
-                                                        <rect key="frame" x="0.0" y="144" width="561" height="21"/>
+                                                        <rect key="frame" x="0.0" y="111" width="561" height="21"/>
                                                         <animations/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="21" id="6HV-uo-KCW"/>
@@ -435,7 +429,7 @@
                                                         </connections>
                                                     </textField>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" placeholderIntrinsicWidth="561" placeholderIntrinsicHeight="21" text="Memory Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S9L-NV-D9Y">
-                                                        <rect key="frame" x="0.0" y="165" width="561" height="21"/>
+                                                        <rect key="frame" x="0.0" y="132" width="561" height="21"/>
                                                         <animations/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="21" id="jdR-Jb-SPe"/>
@@ -445,7 +439,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" placeholderIntrinsicWidth="561" placeholderIntrinsicHeight="21" text="Location Address" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pMf-ib-Bis">
-                                                        <rect key="frame" x="0.0" y="186" width="561" height="21"/>
+                                                        <rect key="frame" x="0.0" y="153" width="561" height="21"/>
                                                         <animations/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="21" id="cx4-8b-X6q"/>
@@ -455,7 +449,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" placeholderIntrinsicWidth="561" placeholderIntrinsicHeight="21" text="Location Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8So-sb-CcC">
-                                                        <rect key="frame" x="0.0" y="207" width="561" height="21"/>
+                                                        <rect key="frame" x="0.0" y="174" width="561" height="21"/>
                                                         <animations/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="21" id="TQr-qY-6lm"/>
@@ -465,7 +459,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" placeholderIntrinsicWidth="561" placeholderIntrinsicHeight="26" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4yu-wT-SnK">
-                                                        <rect key="frame" x="0.0" y="228" width="561" height="21"/>
+                                                        <rect key="frame" x="0.0" y="195" width="561" height="21"/>
                                                         <animations/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="21" id="bER-Dh-dVn"/>
@@ -477,6 +471,25 @@
                                                             <action selector="getLocation:" destination="AUR-yO-S7c" eventType="touchUpInside" id="ide-w4-AfQ"/>
                                                         </connections>
                                                     </button>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" placeholderIntrinsicWidth="42" placeholderIntrinsicHeight="21" text="Notes:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bmm-0E-jgX">
+                                                        <rect key="frame" x="0.0" y="216" width="42" height="21"/>
+                                                        <animations/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="21" id="HlI-c2-hFT"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Write a caption (&lt;= 30 char)" textAlignment="natural" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="8wF-hR-vjg">
+                                                        <rect key="frame" x="0.0" y="237" width="300" height="30"/>
+                                                        <animations/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="300" id="OfT-Cq-rDI"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
                                                 </subviews>
                                                 <animations/>
                                                 <constraints>
@@ -485,6 +498,20 @@
                                                     <constraint firstItem="Y3T-vq-C7T" firstAttribute="trailing" secondItem="6lp-3a-02i" secondAttribute="trailing" id="pWL-lh-3vt"/>
                                                 </constraints>
                                             </stackView>
+                                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" placeholderIntrinsicWidth="120" placeholderIntrinsicHeight="120" image="defaultImage" translatesAutoresizingMaskIntoConstraints="NO" id="QQV-Cf-AaA">
+                                                <rect key="frame" x="19" y="276" width="136" height="136"/>
+                                                <animations/>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YuB-89-fVF">
+                                                <rect key="frame" x="19" y="416" width="48" height="38"/>
+                                                <animations/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <state key="normal" title="Save"/>
+                                                <connections>
+                                                    <action selector="SaveMemPoint:" destination="AUR-yO-S7c" eventType="touchUpInside" id="alH-uU-pND"/>
+                                                    <segue destination="lIU-M6-J9m" kind="show" identifier="ToMemFromSave" id="0sr-r8-3rx"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <animations/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -536,6 +563,7 @@
                         <outlet property="memptLocAddLabel" destination="pMf-ib-Bis" id="5sc-WC-9pL"/>
                         <outlet property="memptLocNameLabel" destination="8So-sb-CcC" id="hkU-N8-ONJ"/>
                         <outlet property="memptTimeTextField" destination="3Ex-B8-zJF" id="Vm7-eH-3q3"/>
+                        <outlet property="noteTextField" destination="8wF-hR-vjg" id="uUF-3f-9oR"/>
                         <outlet property="stackView" destination="6lp-3a-02i" id="ZEV-e4-wms"/>
                     </connections>
                 </viewController>
@@ -595,7 +623,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="bAn-KD-6v0">
-                                <rect key="frame" x="20" y="78" width="560" height="106"/>
+                                <rect key="frame" x="20" y="78" width="560" height="135"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2BR-Dr-a6i">
                                         <rect key="frame" x="0.0" y="0.0" width="560" height="21"/>
@@ -625,11 +653,18 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7q2-zG-TtS">
+                                        <rect key="frame" x="0.0" y="114" width="560" height="21"/>
+                                        <animations/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <animations/>
                             </stackView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" placeholderIntrinsicWidth="240" placeholderIntrinsicHeight="128" image="defaultImage" translatesAutoresizingMaskIntoConstraints="NO" id="kOI-7x-faF">
-                                <rect key="frame" x="20" y="192" width="150" height="150"/>
+                                <rect key="frame" x="20" y="221" width="150" height="150"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="DjQ-9K-7dl"/>
@@ -638,7 +673,7 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yjn-0q-wrl">
-                                <rect key="frame" x="20" y="362" width="150" height="31"/>
+                                <rect key="frame" x="20" y="379" width="150" height="31"/>
                                 <animations/>
                                 <state key="normal" title="Upload to Dropbox"/>
                                 <connections>
@@ -669,6 +704,7 @@
                         <outlet property="memptDateLabel" destination="bII-Zg-qyf" id="0qa-Ap-3uz"/>
                         <outlet property="memptLocLabel" destination="IJu-k1-eiS" id="wdv-ZQ-7ty"/>
                         <outlet property="memptTimeLabel" destination="bmc-VI-PAV" id="QOZ-8D-KPz"/>
+                        <outlet property="noteLabel" destination="7q2-zG-TtS" id="D5t-tF-z7p"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qvt-Us-Qry" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -718,8 +754,8 @@
         <image name="defaultImage" width="540" height="540"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="VUZ-cB-cRh"/>
-        <segue reference="d0x-2r-nnl"/>
+        <segue reference="0sr-r8-3rx"/>
         <segue reference="GD8-ks-kGW"/>
+        <segue reference="VUZ-cB-cRh"/>
     </inferredMetricsTieBreakers>
 </document>

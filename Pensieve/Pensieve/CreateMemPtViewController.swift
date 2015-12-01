@@ -11,7 +11,7 @@ import CoreData
 import GoogleMaps
 import CoreLocation
 
-class CreateMemPtViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, CLLocationManagerDelegate {
+class CreateMemPtViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, CLLocationManagerDelegate, UITextFieldDelegate {
     
     
     let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
@@ -27,11 +27,13 @@ class CreateMemPtViewController: UIViewController, UINavigationControllerDelegat
     @IBOutlet weak var memptTimeTextField: UITextField!
     var placePicker: GMSPlacePicker?
     var locationManager: CLLocationManager?
-    var lat:String! = "38"
-    var lon:String! = "-78"
+    var lat:String! = "38.031432"
+    var lon:String! = "-78.510798"
     @IBOutlet weak var memptLocNameLabel: UILabel!
     @IBOutlet weak var memptLocAddLabel: UILabel!
     @IBOutlet weak var stackView: UIStackView!
+    @IBOutlet weak var noteTextField: UITextField!
+    
     
     
 
@@ -45,6 +47,9 @@ class CreateMemPtViewController: UIViewController, UINavigationControllerDelegat
         stackFrame.size.width = UIScreen.mainScreen().bounds.width
         stackView.frame = stackFrame
         imageData = UIImagePNGRepresentation(UIImage(named: "defaultImage")!)
+        
+        noteTextField.delegate = self
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -224,8 +229,10 @@ class CreateMemPtViewController: UIViewController, UINavigationControllerDelegat
             newMem.setValue(loc, forKey: "memloc")
             newMem.setValue(String(i), forKey:"pointid")
             newMem.setValue(imageData, forKey: "picfileloc")
+            newMem.setValue(noteTextField.text, forKey:"note")
             
             print("All the Rest Saved")
+            print("Note:" + noteTextField.text!)
             //print("PICFILELOC: " + String(imageData))
 
             do{
@@ -428,6 +435,23 @@ class CreateMemPtViewController: UIViewController, UINavigationControllerDelegat
         
         
         
+    }
+    
+    // MARK: TEXT VIEW
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true;
+    }
+    
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        
+        let currentCharacterCount = textField.text?.characters.count ?? 0
+        if (range.length + range.location > currentCharacterCount){
+            return false
+        }
+        let newLength = currentCharacterCount + string.characters.count - range.length
+        return newLength <= 30
     }
 
     

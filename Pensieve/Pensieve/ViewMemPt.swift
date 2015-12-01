@@ -18,6 +18,7 @@ class ViewMemPt: UIViewController {
     @IBOutlet weak var memptTimeLabel: UILabel!
     @IBOutlet weak var memptLocLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var noteLabel: UILabel!
     var found = false
     var good = false
     
@@ -32,6 +33,7 @@ class ViewMemPt: UIViewController {
     var passedLoc:String!
     var passedFileLoc:String!
     var passedId:String!
+    var passedNote:String!
     
     @IBAction func dropboxUpload(sender: AnyObject) {
         if (Dropbox.authorizedClient == nil) {
@@ -93,6 +95,7 @@ class ViewMemPt: UIViewController {
         memptDateLabel.text = passedDate
         memptTimeLabel.text = passedTime
         memptLocLabel.text = passedLoc
+        noteLabel.text = passedNote
         findImg()
         
         

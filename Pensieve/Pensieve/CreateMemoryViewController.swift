@@ -22,8 +22,8 @@ class CreateMemoryViewController: UIViewController, UITextFieldDelegate, UIImage
     
     var placePicker: GMSPlacePicker?
     var locationManager: CLLocationManager?
-    var lat:String! = "38"
-    var lon:String! = "-78"
+    var lat:String! = "38.031432"
+    var lon:String! = "-78.510798"
     @IBOutlet weak var locNameLabel: UILabel!
     @IBOutlet weak var locAddLabel: UILabel!
     
@@ -39,6 +39,8 @@ class CreateMemoryViewController: UIViewController, UITextFieldDelegate, UIImage
         //memNameLabel.text = memNameTextField.text
         
         //placePicker = GMSPlacePicker()
+        
+        memNameTextField.delegate = self
         
     }
     

@@ -21,6 +21,7 @@ class MemoryViewController: UIViewController, UITableViewDelegate {
     var memTime = String()
     var memLoc = String()
     var memId = String()
+    var note = String()
     //var picFileLoc = String()
     var passName:String!
     var passDate:String!
@@ -81,6 +82,7 @@ class MemoryViewController: UIViewController, UITableViewDelegate {
                         memLoc = ((memory.valueForKey("memloc")as? String)!)
                         memId = ((memory.valueForKey("pointid")as? String)!)
                         //picFileLoc = ((memory.valueForKey("picfileloc")as? String)!)
+                        note = ((memory.valueForKey("note")as? String)!)
                     }
                 }
             }
@@ -111,6 +113,7 @@ class MemoryViewController: UIViewController, UITableViewDelegate {
             memVC.passedTime = memTime
             memVC.passedLoc = memLoc
             memVC.passedId = memId
+            memVC.passedNote = note
             //memVC.passedFileLoc = picFileLoc
         }
         
